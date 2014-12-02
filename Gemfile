@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.10'
 
 gem 'devise'
+gem 'figaro', '1.0'
 
 group :development, :test do
   gem 'rspec-rails'
