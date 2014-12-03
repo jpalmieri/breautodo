@@ -6,8 +6,11 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.new(todo_params)
-    @todo.save
-    redirect_to @todo, notice: 'Your new TODO was saved'
+    if @todo.save
+      redirect_to @todo, notice: "Your new TODO was saved"
+    else
+      redirect_to new_todo_path, alert: "There was an error saving your todo: #{@todo.errors.full_messages.first}"
+    end
   end
 
   def show
