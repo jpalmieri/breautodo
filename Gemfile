@@ -5,6 +5,11 @@ gem 'rails', '4.0.10'
 
 gem 'devise'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
+
 # Use sqlite3 as the database for Active Record
 group :production do
   gem 'pg'
