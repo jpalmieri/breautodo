@@ -1,4 +1,20 @@
-<% @todos.each do |todo| %>
-  <%= todo.description %>
-  <%= link_to "Done", todo, method: :delete %>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <h4>
+    <tr>
+      <td>#</td>
+      <td>Description</td>
+      <td>Days Left</td>
+      <td></td>
+    </tr>
+  </h4>
+  </thead>
+  <% @todos.each_with_index do |todo, i| %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= todo.description %></td>
+      <td>#</td>
+      <td><%= link_to "Delete", todo, method: :delete, class: 'btn btn-success' %></td>
+    </tr>
+  <% end %>
+</table>

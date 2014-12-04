@@ -7,7 +7,7 @@ feature "Delete todo item" do
     fill_in 'Description', with: "Buy groceries"
     click_button 'Save'
 
-    click_link 'Done'
+    click_link 'Delete'
 
     expect( page ).to_not have_content("Buy groceries")
     expect( page ).to have_content("Todo deleted successfully")
