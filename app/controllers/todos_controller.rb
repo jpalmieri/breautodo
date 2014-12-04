@@ -22,7 +22,7 @@ class TodosController < ApplicationController
     if @todo.destroy
       redirect_to todos_path, notice: "Todo deleted successfully"
     else
-      redirect_to new_todo_path, alert: "There was an error deleting your todo: #{@todo.errors.full_messages.first}"
+      redirect_to new_todo_path, alert: "There was an error deleting your todo. Please try again."
     end
   end
 
