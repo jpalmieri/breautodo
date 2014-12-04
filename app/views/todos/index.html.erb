@@ -1,20 +1,26 @@
-<table class="table table-striped">
-  <thead>
-    <h4>
-    <tr>
-      <td>#</td>
-      <td>Description</td>
-      <td>Days Left</td>
-      <td></td>
-    </tr>
-  </h4>
-  </thead>
-  <% @todos.each_with_index do |todo, i| %>
-    <tr>
-      <td><%= i+1 %></td>
-      <td><%= todo.description %></td>
-      <td>#</td>
-      <td><%= link_to "Delete", todo, method: :delete, class: 'btn btn-success' %></td>
-    </tr>
-  <% end %>
-</table>
+<% if @todos.first %>
+  <table class="table table-striped">
+    <thead>
+      <h4>
+      <tr>
+        <td>#</td>
+        <td>Description</td>
+        <td>Days Left</td>
+        <td></td>
+      </tr>
+    </h4>
+    </thead>
+    <% @todos.each_with_index do |todo, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= todo.description %></td>
+        <td>#</td>
+        <td><%= link_to "Delete", todo, method: :delete, class: 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to "Add todo", new_todo_path, class: 'btn btn-success' %>
+<% else %>
+  <h3>No todos!</h3>
+  <%= link_to "Add todo", new_todo_path, class: 'btn btn-success' %>
+<% end %>
