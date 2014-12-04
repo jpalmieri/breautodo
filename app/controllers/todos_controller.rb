@@ -4,6 +4,9 @@ class TodosController < ApplicationController
     @todo = Todo.new
   end
 
+  def index
+  end
+
   def create
     @todo = Todo.new(todo_params)
     if @todo.save
