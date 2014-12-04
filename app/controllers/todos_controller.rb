@@ -9,7 +9,7 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @todo = current_user.todos.create(todo_params)
     if @todo.save
       redirect_to todos_path, notice: "Your new TODO was saved"
     else
