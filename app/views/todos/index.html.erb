@@ -1,3 +1,4 @@
 <% @todos.each do |todo| %>
   <%= todo.description %>
+  <%= link_to "Done", todo, method: :delete %>
 <% end %>

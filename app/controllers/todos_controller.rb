@@ -17,6 +17,15 @@ class TodosController < ApplicationController
     end
   end
 
+  def destroy
+    @todo = Todo.find params[:id]
+    if @todo.destroy
+      redirect_to todos_path, notice: "Todo deleted successfully"
+    else
+      redirect_to new_todo_path, alert: "There was an error deleting your todo: #{@todo.errors.full_messages.first}"
+    end
+  end
+
   def show
     @todo = Todo.find params[:id]
   end
