@@ -10,7 +10,6 @@ feature 'User signs up' do
   end
 
   scenario 'Successfully' do
-
     fill_in 'Name', with: "Robert Paulson"
     fill_in 'Email', with: "robertpaulson@example.com"
     fill_in 'Password', with: "helloworld"
@@ -24,8 +23,7 @@ feature 'User signs up' do
     expect( page ).to have_content('A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
   end
 
-  scenario "unsuccessfully" do
-
+  scenario "Password too short" do
     fill_in 'Name', with: "Robert Paulson"
     fill_in 'Email', with: "robertpaulson@example.com"
     fill_in 'Password', with: "1234567"
@@ -37,6 +35,20 @@ feature 'User signs up' do
 
     expect(current_path).to eq user_registration_path
     expect( page ).to have_content("1 error prohibited this user from being saved: Password is too short (minimum is 8 characters)")
+  end
+
+  scenario "Invalid email" do
+    fill_in 'Name', with: "Robert Paulson"
+    fill_in 'Email', with: "robertpaulson@example"
+    fill_in 'Password', with: "helloworld"
+    fill_in 'Password confirmation', with: "helloworld"
+
+    within 'form' do
+      click_button 'Sign up'
+    end
+
+    expect(current_path).to eq user_registration_path
+    expect( page ).to have_content("1 error prohibited this user from being saved: Email is invalid")
   end
  
 end
