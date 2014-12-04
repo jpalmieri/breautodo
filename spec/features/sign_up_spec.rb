@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 feature 'User signs up' do
-  scenario 'Successfully' do
+
+  before do
     visit root_path
     within '.user-info' do
       click_link 'Sign Up'
     end
+  end
+
+  scenario 'Successfully' do
 
     fill_in 'Name', with: "Robert Paulson"
     fill_in 'Email', with: "robertpaulson@example.com"
@@ -21,10 +25,6 @@ feature 'User signs up' do
   end
 
   scenario "unsuccessfully" do
-    visit root_path
-    within '.user-info' do
-      click_link "Sign Up"
-    end
 
     fill_in 'Name', with: "Robert Paulson"
     fill_in 'Email', with: "robertpaulson@example.com"
