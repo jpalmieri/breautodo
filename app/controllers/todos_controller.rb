@@ -5,12 +5,13 @@ class TodosController < ApplicationController
   end
 
   def index
+    @todos = Todo.where(user_id: current_user)
   end
 
   def create
     @todo = Todo.new(todo_params)
     if @todo.save
-      redirect_to @todo, notice: "Your new TODO was saved"
+      redirect_to todos_path, notice: "Your new TODO was saved"
     else
       redirect_to new_todo_path, alert: "There was an error saving your todo: #{@todo.errors.full_messages.first}"
     end
