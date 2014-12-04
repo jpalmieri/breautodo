@@ -70,8 +70,6 @@ GEM
     mini_portile (0.6.1)
     minitest (4.7.5)
     multi_json (1.10.1)
-    orm_adapter (0.5.0)
-    pg (0.17.1)
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -155,8 +153,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara
   bootstrap-sass (~> 3.3.1)
+  capybara
   coffee-rails (~> 4.0.0)
   devise
   figaro (= 1.0)
