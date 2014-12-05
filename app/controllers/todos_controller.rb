@@ -13,7 +13,8 @@ class TodosController < ApplicationController
     if @todo.save
       redirect_to todos_path, notice: "Your new TODO was saved"
     else
-      redirect_to new_todo_path, alert: "There was an error saving your todo: #{@todo.errors.full_messages.first}"
+      flash[:error] = "There was an error saving your todo: #{@todo.errors.full_messages.first}"
+      redirect_to new_todo_path
     end
   end
 
@@ -22,7 +23,8 @@ class TodosController < ApplicationController
     if @todo.destroy
       redirect_to todos_path, notice: "Todo deleted successfully"
     else
-      redirect_to new_todo_path, alert: "There was an error deleting your todo. Please try again."
+      flash[:error] = "There was an error deleting your todo. Please try again."
+      redirect_to new_todo_path
     end
   end
 
