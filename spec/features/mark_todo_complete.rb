@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 feature "Delete todo item" do
-
-  include TestModules
   
   scenario "successfully" do
 
-    capy_sign_in
+    authenticate_user
 
     visit new_todo_path
     fill_in 'Description', with: "Buy groceries"

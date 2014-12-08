@@ -3,6 +3,8 @@ require 'rails_helper'
 feature "View multiple todo items" do
   scenario "successfilly" do
 
+    authenticated_user
+
     visit new_todo_path
     fill_in 'Description', with: "Buy groceries"
     click_button 'Save'

@@ -2,11 +2,9 @@ require 'rails_helper'
 
 describe "Sign out flow" do
 
-  include TestModules
-
   describe "successfully" do
     it "redirects to the welcome index (root)" do
-      capy_sign_in
+      authenticated_user
   
       within '.user-info' do
         click_link 'Sign out'
