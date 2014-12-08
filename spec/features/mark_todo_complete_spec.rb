@@ -4,7 +4,7 @@ feature "Delete todo item" do
   
   scenario "successfully" do
 
-    authenticate_user
+    sign_in
 
     visit new_todo_path
     fill_in 'Description', with: "Buy groceries"

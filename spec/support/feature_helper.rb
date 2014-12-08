@@ -1,6 +1,6 @@
 module SignInHelper
 
-  def authenticated_user
+  def sign_in
     user = create(:user)
     visit root_path
 

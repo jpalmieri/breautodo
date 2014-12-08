@@ -4,7 +4,7 @@ describe "Sign in flow" do
 
   describe "successful" do
     it "redirects to the todo index" do
-      authenticated_user
+      sign_in
 
       expect(current_path).to eq todos_path
     end

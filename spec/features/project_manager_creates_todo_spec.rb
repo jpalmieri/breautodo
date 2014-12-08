@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Project manager creates TODO' do
 
   scenario 'Successfully' do
-    authenticated_user
+    sign_in
     visit new_todo_path
     fill_in 'Description', with: 'Meet up with the team'
     click_button 'Save'
@@ -13,7 +13,7 @@ feature 'Project manager creates TODO' do
   end
 
   scenario 'Unsuccessfully: no description' do
-    authenticated_user
+    sign_in
     visit new_todo_path
     click_button 'Save'
     expect( page ).to have_content("There was an error saving your todo: Description is too short (minimum is 5 characters)")

@@ -4,7 +4,7 @@ describe "Sign out flow" do
 
   describe "successfully" do
     it "redirects to the welcome index (root)" do
-      authenticated_user
+      sign_in
   
       within '.user-info' do
         click_link 'Sign out'
