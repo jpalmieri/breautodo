@@ -4,12 +4,9 @@ class Todo < ActiveRecord::Base
   validates :description, length: { minimum: 5 }, presence: true
   validates :user_id, presence: :true
 
-after_create :update_days
-
-private
-
-def update_days
-  self.days_left = 7
+def days_left
+  @expiration_date = self.created_at + 7.days
+  @days_until_expiration = (@expiration_date - Time.now) / (60*60*24)
 end
 
 end

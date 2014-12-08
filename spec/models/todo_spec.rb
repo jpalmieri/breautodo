@@ -8,7 +8,7 @@ describe Todo do
     end
 
     it "counts the number of days until a new todo is destroyed" do
-      expect( @todo.days_left ).to eq(7)
+      expect( @todo.days_left.round ).to eq(7)
     end
 
   end
