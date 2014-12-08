@@ -10,7 +10,7 @@ class TodosController < ApplicationController
 
   def create
     @todo = current_user.todos.create(todo_params)
-    if @todo.save
+    if @todo.persisted?
       redirect_to todos_path, notice: "Your new TODO was saved"
     else
       redirect_to new_todo_path, alert: "There was an error saving your todo: #{@todo.errors.full_messages.first}"
