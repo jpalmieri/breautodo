@@ -1,6 +1,6 @@
-module TestModules
+module SignInHelper
 
-  def capy_sign_in
+  def sign_in
     user = create(:user)
     visit root_path
 
