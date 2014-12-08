@@ -5,7 +5,7 @@ class TodosController < ApplicationController
   end
 
   def index
-    @todos = Todo.where(user_id: current_user)
+    @todos = current_user.todos
   end
 
   def create
