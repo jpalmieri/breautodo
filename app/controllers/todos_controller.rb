@@ -9,8 +9,8 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
-    if @todo.save
+    @todo = current_user.todos.create(todo_params)
+    if @todo.persisted?
       redirect_to todos_path, notice: "Your new TODO was saved"
     else
       flash[:error] = "There was an error saving your todo: #{@todo.errors.full_messages.first}"
