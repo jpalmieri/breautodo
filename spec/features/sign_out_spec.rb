@@ -4,7 +4,8 @@ describe "Sign out flow" do
 
   describe "successfully" do
     it "redirects to the welcome index (root)" do
-      sign_in
+      user = create(:user)
+      sign_in(user)
 
       within '.user-info' do
         click_link 'Sign out'

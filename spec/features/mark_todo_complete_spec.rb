@@ -3,8 +3,8 @@ require 'rails_helper'
 feature "Delete todo item" do
   
   scenario "successfully" do
-
-    sign_in
+    user = create(:user)
+    sign_in(user)
 
     visit new_todo_path
     fill_in 'Description', with: "Buy groceries"

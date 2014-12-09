@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature "View multiple todo items" do
   scenario "successfilly" do
-
-    sign_in
+    user = create(:user)
+    sign_in(user)
 
     visit new_todo_path
     fill_in 'Description', with: "Buy groceries"
