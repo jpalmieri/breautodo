@@ -7,6 +7,7 @@ gem 'devise'
 gem 'figaro', '1.0'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'timecop'
+gem 'pundit'
 
 group :development, :test do
   gem 'rspec-rails'
