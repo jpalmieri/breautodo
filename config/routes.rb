@@ -5,6 +5,6 @@ Blocitoff::Application.routes.draw do
 
   root 'welcome#index'
 
-  resources :todos, only: [:new, :create, :show, :index, :destroy]
+  resources :todos, only: [:new, :create, :index, :destroy]
 
 end
