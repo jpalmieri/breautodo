@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    create?
+    create? && record.user == user
   end
 
   def scope
