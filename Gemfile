@@ -27,6 +27,7 @@ end
 group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
+  gem 'shoulda-matchers', require: false
 end
 
 # Use SCSS for stylesheets
