@@ -23,7 +23,7 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.find params[:id]
+    @todo = current_user.todos.find params[:id]
     authorize @todo
     if @todo.destroy
       redirect_to todos_path, notice: "Todo deleted successfully"
@@ -37,6 +37,11 @@ class TodosController < ApplicationController
 
   def todo_params
     params.require(:todo).permit(:description)
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do
+    flash[:error] = "There was an error deleting your todo. You are not authorized to delete this todo."
+    redirect_to root_path
   end
 
 end

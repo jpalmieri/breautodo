@@ -22,7 +22,7 @@ describe TodosController do
       sign_in @user2
       delete :destroy, { id: @todo.id }
       should redirect_to root_url
-      should set_the_flash.to("You are not authorized")
+      should set_the_flash.to("There was an error deleting your todo. You are not authorized to delete this todo.")
     end
 
   end
