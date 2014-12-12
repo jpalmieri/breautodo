@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'shoulda/matchers'
+require 'email_spec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -30,6 +31,10 @@ ActiveRecord::Migration.check_pending!
 RSpec.configure do |config|
   # Include SignInHelper only in feature specs
   config.include SignInHelper, type: :feature
+
+  # include email-spec helpers and matcher in all examples
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
