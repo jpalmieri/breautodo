@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Todo, :type => :model do
+describe Todo do
   
   before do
     @todo = create(:todo)
