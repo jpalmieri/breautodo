@@ -14,7 +14,7 @@
       <tr>
         <td><%= i+1 %></td>
         <td><%= todo.description %></td>
-        <td class='days-left'><%= todo.days_left.round %></td>
+        <td class='days-left'><%= todo.days_left.ceil %></td>
         <td><%= link_to "Delete", todo, method: :delete, class: 'btn btn-success' %></td>
       </tr>
     <% end %>
