@@ -29,7 +29,7 @@ SECRET_KEY_BASE: XXXXXXXXXXXXXXX
 
 and save the file.
 
-6. After logging into your (authorized) Heroku account, create a Heroku app:
+6. After logging into your (verified*) Heroku account, create a Heroku app:
 `$ heroku create`
 
 7. Add Sendgrid to Heroku:
@@ -56,3 +56,5 @@ heroku run rake db:migrate
 ```
 
 13. Run `$ rails s` and go to `localhost:3000` to view the local server, or simply go to the url listed in the Heroku output to view your app (run `heroku apps:info` to get the url).
+
+*You can find information on verifying a Heroku account here: [https://devcenter.heroku.com/articles/account-verification](https://devcenter.heroku.com/articles/account-verification)
