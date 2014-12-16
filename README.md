@@ -55,4 +55,4 @@ rake db:migrate
 heroku run rake db:migrate
 ```
 
-13. Run `$ rails s` to start your server, and go to `localhost:3000` to view the local server, or go to the url listed in the Heroku output to view your app (run `heroku apps:info` to get the url).
+13. Run `$ rails s` and go to `localhost:3000` to view the local server, or simply go to the url listed in the Heroku output to view your app (run `heroku apps:info` to get the url).
