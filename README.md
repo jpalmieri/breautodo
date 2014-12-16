@@ -9,19 +9,23 @@ Installation
 =====
 
 1. Clone the repo:
-`$ git clone https://github.com/jpalmieri/blocitoff.git`
+```
+$ git clone https://github.com/jpalmieri/blocitoff.git
+```
 
-2. Open the new directory:
-`$ cd blocitoff`
+2. Open the new directory: `$ cd blocitoff`
 
 3. Create an `application.yml` file for your environment variables (by copying the example file):
-`$ cp config/application.example.yml config/application.yml`
+```
+$ cp config/application.example.yml config/application.yml
+```
 
-4. Generate a secret key for Devise authentication
-`$ rake secret`
+4. Generate a secret key for Devise authentication: `$ rake secret`
 
 5. Copy and paste the secret next to `SECRET_KEY_BASE: `, like so:
-`SECRET_KEY_BASE: XXXXXXXXXXXXXXX`
+```
+SECRET_KEY_BASE: XXXXXXXXXXXXXXX
+```
 
 and save the file.
 
