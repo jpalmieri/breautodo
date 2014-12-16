@@ -6,7 +6,6 @@ gem 'rails', '4.0.10'
 gem 'devise'
 gem 'figaro', '1.0'
 gem 'bootstrap-sass', '~> 3.3.1'
-gem 'timecop'
 gem 'pundit'
 gem 'whenever', :require => false
 
@@ -30,6 +29,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', require: false
   gem 'email_spec'
+  gem 'timecop'
 end
 
 # Use SCSS for stylesheets
