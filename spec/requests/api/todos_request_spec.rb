@@ -15,13 +15,28 @@ describe "Todos API" do
       expect(Todo.count).to eq(0)
     end
 
-    xit "should ensure a user is authenticated" do
+    it "prevents anonymous attacker from deleting" do
+      user = create(:user)
+      todo = create(:todo, user: user)
+      
+      delete "/api/v1/todos/#{todo.id}", {}, "Authorization" => "made-up-token"
+
+      expect(response.status).to eq(401)
+      expect(json[:message]).to eq("Unauthorized")
+      expect(response.content_type).to eq("application/json")
     end
 
-    xit "prevents attackers from deleting others todos" do
+    xit "prevents logged in attacker from deleting others todos" do
+
     end
 
     xit "respond with 404 for unknown todo id" do
+    end
+
+    private
+
+    def json
+      JSON.parse(response.body, symbolize_names: true)
     end
 
   end
