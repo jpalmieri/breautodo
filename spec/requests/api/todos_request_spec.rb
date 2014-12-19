@@ -24,13 +24,30 @@ describe "Todos API" do
       expect(response.status).to eq(401)
       expect(json[:message]).to eq("Unauthorized")
       expect(response.content_type).to eq("application/json")
+      expect(Todo.count).to eq(1)
     end
 
-    xit "prevents logged in attacker from deleting others todos" do
+    it "prevents logged in attacker from deleting others todos" do
+      user1 = create(:user)
+      todo = create(:todo, user: user1)
+      user2 = create(:user)
 
+      delete "/api/v1/todos/#{todo.id}", {}, "Authorization" => user2.auth_token
+
+      expect(response.status).to eq(403)
+      expect(json[:message]).to eq("Forbidden")
+      expect(response.content_type).to eq("application/json")
+      expect(Todo.count).to eq(1)
     end
 
-    xit "respond with 404 for unknown todo id" do
+    it "respond with 404 for unknown todo id" do
+      user = create(:user)
+
+      delete "/api/v1/todos/999", {}, "Authorization" => user.auth_token
+
+      expect(response.status).to eq(404)
+      expect(json[:message]).to eq("Not Found")
+      expect(response.content_type).to eq("application/json")
     end
 
     private
