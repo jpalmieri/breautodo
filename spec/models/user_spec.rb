@@ -23,5 +23,12 @@ describe User do
       user.save!
       expect(user.auth_token).to eq("some-secret-token")
     end
+
+    it "returns error when auth token is removed from user" do
+      user = create(:user)
+      user.auth_token = nil
+      user.valid?
+      expect(user.errors.full_messages).to eq(["Auth token can't be blank"])
+    end
   end
 end
