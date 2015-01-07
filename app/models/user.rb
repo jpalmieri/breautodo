@@ -6,11 +6,11 @@ class User < ActiveRecord::Base
 
   has_many :todos, dependent: :destroy
 
-  before_create :generate_auth_token
+  before_validation :generate_auth_token
 
   private
 
   def generate_auth_token
-    self.auth_token = Devise.friendly_token
+    self.auth_token ||= Devise.friendly_token
   end
 end

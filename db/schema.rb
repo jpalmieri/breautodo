@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217194527) do
+ActiveRecord::Schema.define(version: 20150107185516) do
 
   create_table "todos", force: true do |t|
     t.string   "description"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20141217194527) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "auth_token"
+    t.string   "auth_token",                          null: false
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token"
