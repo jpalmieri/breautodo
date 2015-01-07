@@ -28,11 +28,11 @@ describe "Todos API" do
     end
 
     it "prevents logged in attacker from deleting others todos" do
-      user1 = create(:user)
-      todo = create(:todo, user: user1)
-      user2 = create(:user)
+      victim = create(:user)
+      todo = create(:todo, user: victim)
+      attacker = create(:user)
 
-      delete "/api/v1/todos/#{todo.id}", {}, "Authorization" => user2.auth_token
+      delete "/api/v1/todos/#{todo.id}", {}, "Authorization" => attacker.auth_token
 
       expect(response.status).to eq(403)
       expect(json[:message]).to eq("Forbidden")
