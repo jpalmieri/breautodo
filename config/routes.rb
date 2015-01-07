@@ -7,4 +7,9 @@ Blocitoff::Application.routes.draw do
 
   resources :todos, only: [:new, :create, :index, :destroy]
 
+  namespace :api do
+    namespace :v1 do
+      resources :todos, only: [:destroy]
+    end
+  end
 end
