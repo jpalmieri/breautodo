@@ -50,12 +50,47 @@ describe "Todos API" do
       expect(response.content_type).to eq("application/json")
     end
 
-    private
+  end
 
-    def json
-      JSON.parse(response.body, symbolize_names: true)
+  context "POST create" do
+
+    it "should create a todo" do
+      user = create(:user)
+
+      post "/api/v1/todos", {description: "Finish Blocitoff"}, "Authorization" => user.auth_token
+
+      expect(response.status).to eq(204)
+      expect(Todo.count).to eq(1)
+    end
+
+    it "prevents anonymous attacker from creating" do
+      user = create(:user)
+      
+      post "/api/v1/todos", {description: "Finish Blocitoff"}, "Authorization" => "fake-token"
+
+      expect(response.status).to eq(401)
+      expect(json[:message]).to eq("Unauthorized")
+      expect(response.content_type).to eq("application/json")
+      expect(Todo.count).to eq(0)
+    end
+
+    it "prevents logged in attacker from creating todos in other accounts" do
+      victim = create(:user)
+      attacker = create(:user)
+
+      post "/api/v1/todos", {description: "Finish Blocitoff"}, "Authorization" => attacker.auth_token
+
+      expect(response.status).to eq(403)
+      expect(json[:message]).to eq("Forbidden")
+      expect(response.content_type).to eq("application/json")
+      expect(Todo.count).to eq(0)
     end
 
   end
 
+  private
+
+  def json
+    JSON.parse(response.body, symbolize_names: true)
+  end
 end
