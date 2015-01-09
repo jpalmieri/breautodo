@@ -78,6 +78,35 @@ describe "Todos API" do
 
   end
 
+  context "GET index" do
+    
+    it "should show a list of todos" do
+      user = create(:user)
+      todo1 = create(:todo, user: user)
+      todo2 = create(:todo, user: user)
+
+      get "/api/v1/todos", "Authorization" => user.auth_token
+
+      expect(response.status).to eq(200)
+      expect(json[0][:todo]).to eq(todo1)
+      expect(json[1][:todo]).to eq(todo2)
+      expect(response.content_type).to eq("application/json")
+    end
+
+    it "should prevent an anonymous user from seeing a list of todos" do
+      user = create(:user)
+      todo1 = create(:todo, user: user)
+      todo2 = create(:todo, user: user)
+
+      get "/api/v1/todos", "Authorization" => "fake-token"
+
+      expect(response.status).to eq(401)
+      expect(json[:message]).to eq("Unauthorized")
+      expect(response.content_type).to eq("application/json")
+    end
+
+  end
+
   private
 
   def json
