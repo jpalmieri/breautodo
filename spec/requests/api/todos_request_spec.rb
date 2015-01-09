@@ -61,8 +61,8 @@ describe "Todos API" do
 
       expect(response.status).to eq(201)
       json = JSON.parse(response.body, symbolize_names: true)
-      expect(json[:id]).to eq(Todo.last.id)
-      expect(json[:description]).to eq("Finish Blocitoff")
+      expect(json[:todo][:id]).to eq(Todo.last.id)
+      expect(json[:todo][:description]).to eq("Finish Blocitoff")
       expect(Todo.count).to eq(1)
     end
 

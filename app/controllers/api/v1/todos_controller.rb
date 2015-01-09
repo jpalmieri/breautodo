@@ -6,7 +6,7 @@ class Api::V1::TodosController < Api::ApiController
 
     if user
       todo = user.todos.create(description: params[:description])
-      render json: {id: todo.id, description: todo.description}, status: :created
+      render json: TodoSerializer.new(todo).to_json, status: :created
     else
       render json: {message: "Unauthorized"}, status: :unauthorized
     end
