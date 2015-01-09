@@ -5,8 +5,8 @@ class Api::V1::TodosController < Api::ApiController
     user = User.find_by_auth_token(request.headers["Authorization"])
 
     if user
-      user.todos.create(description: params[:description])
-      head :no_content
+      todo = user.todos.create(description: params[:description])
+      render json: {id: todo.id, description: todo.description}, status: :created
     else
       render json: {message: "Unauthorized"}, status: :unauthorized
     end

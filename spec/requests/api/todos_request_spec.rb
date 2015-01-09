@@ -59,7 +59,10 @@ describe "Todos API" do
 
       post "/api/v1/todos", {description: "Finish Blocitoff"}, "Authorization" => user.auth_token
 
-      expect(response.status).to eq(204)
+      expect(response.status).to eq(201)
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(json[:id]).to eq(Todo.last.id)
+      expect(json[:description]).to eq("Finish Blocitoff")
       expect(Todo.count).to eq(1)
     end
 
