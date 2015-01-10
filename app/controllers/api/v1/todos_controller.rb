@@ -12,6 +12,17 @@ class Api::V1::TodosController < Api::ApiController
     end
   end
 
+  def index
+    user = User.find_by_auth_token(request.headers["Authorization"])
+
+    if !user
+      render json: {message: "Unauthorized"}, status: :unauthorized
+    else
+      todos = user.todos
+      render json: todos, each_serializer: TodoSerializer, status: :ok
+    end
+  end
+
   def destroy
     todo = Todo.find(params[:id])
     user = User.find_by_auth_token(request.headers["Authorization"])

@@ -85,11 +85,13 @@ describe "Todos API" do
       todo1 = create(:todo, user: user)
       todo2 = create(:todo, user: user)
 
-      get "/api/v1/todos", "Authorization" => user.auth_token
+      get "/api/v1/todos", {}, "Authorization" => user.auth_token
 
       expect(response.status).to eq(200)
-      expect(json[0][:todo]).to eq(todo1)
-      expect(json[1][:todo]).to eq(todo2)
+      expect(json[:todos][0][:id]).to eq(todo1.id)
+      expect(json[:todos][0][:description]).to eq(todo1.description)
+      expect(json[:todos][1][:id]).to eq(todo2.id)
+      expect(json[:todos][1][:description]).to eq(todo2.description)
       expect(response.content_type).to eq("application/json")
     end
 
