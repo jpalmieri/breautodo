@@ -41,10 +41,6 @@
       todoRow.html('<div class="alert alert-success">Todo deleted successfully</div>').fadeOut(1000);
     };
 
-    function todoDeletedFlash() {
-      
-    };
-
     $.ajax(ajaxOptions).done(removeTodoFromDOM).fail(handleError);
   };
 
