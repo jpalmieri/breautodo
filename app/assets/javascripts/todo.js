@@ -38,7 +38,11 @@
       // Assumes that the delete button is a child element of the
       // todo's table row.
       var todoRow = clickedElement.closest("tr");
-      todoRow.remove();
+      todoRow.html('<div class="alert alert-success">Todo deleted successfully</div>').fadeOut(1000);
+    };
+
+    function todoDeletedFlash() {
+      
     };
 
     $.ajax(ajaxOptions).done(removeTodoFromDOM).fail(handleError);
