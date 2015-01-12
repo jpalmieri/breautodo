@@ -15,7 +15,7 @@
         <td><%= i+1 %></td>
         <td><%= todo.description %></td>
         <td class='days-left'><%= todo.days_left.ceil %></td>
-        <td><%= link_to "Delete", todo, method: :delete, class: 'btn btn-success' %></td>
+        <td><%= link_to "Delete", "javascript:void(0);", class: 'btn btn-success', data: { :"todo-id" => todo.id, :"delete-todo-button" => true } %></td>
       </tr>
     <% end %>
   </table>
