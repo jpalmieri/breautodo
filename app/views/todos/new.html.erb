@@ -8,7 +8,7 @@
   </div>
   <div class="form-group">
     <div class="col-md-offset-2 col-md-2">
-      <%= form.submit 'Save', class: 'btn btn-success' %>
+      <%= form.submit 'Save', class: 'btn btn-success', data: { :"todo-id" => @todo.id, :"create-todo-button" => true } %>
     </div>
   </div>
 <% end %>
