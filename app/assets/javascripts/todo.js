@@ -44,9 +44,35 @@
     $.ajax(ajaxOptions).done(removeTodoFromDOM).fail(handleError);
   };
 
-  function setupTodoDeleteHandlers() {
-    $(document).on("click", "[data-delete-todo-button]", deleteTodo);
+  function clearForm() {
+    //clear input field
+    var descriptionInput = $("#todo_description");
+    descriptionInput.val("");
   };
-  setupTodoDeleteHandlers();
+
+  function createTodo(event) {
+    event.preventDefault();
+
+    var descriptionInput = $("#todo_description");
+    var description = descriptionInput.val();
+    var todo = { "description": description };
+
+    var ajaxOptions = {
+      type: "POST",
+      headers: { "Authorization": getAuthToken() },
+      url: "/api/v1/todos",
+      dataType: "json",
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(todo)
+    };
+
+    $.ajax(ajaxOptions).done([clearForm]).fail(handleError);
+  };
+
+  function setupTodoHandlers() {
+    $(document).on("click", "[data-delete-todo-button]", deleteTodo);
+    $(document).on("click", "[data-create-todo-button]", createTodo);
+  };
+  setupTodoHandlers();
 
 })(jQuery);
