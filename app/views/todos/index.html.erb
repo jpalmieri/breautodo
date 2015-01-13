@@ -19,8 +19,18 @@
       </tr>
     <% end %>
   </table>
-  <%= link_to "Add todo", new_todo_path, class: 'btn btn-success' %>
 <% else %>
   <h3>No todos!</h3>
-  <%= link_to "Add todo", new_todo_path, class: 'btn btn-success' %>
+<% end %>
+<%= form_for @todos.new, :html => {:class => "form-horizontal center"} do |form| %>
+  <div class="form-group">
+    <div class="col-md-8">
+      <%= form.text_field :description, autofocus: true, placeholder: 'Description', class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-2">
+      <%= form.submit 'Add Todo', class: 'btn btn-success', data: { :"todo-id" => @todos.new.id, :"create-todo-button" => true } %>
+    </div>
+  </div>
 <% end %>
