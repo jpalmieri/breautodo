@@ -38,10 +38,23 @@
       // Assumes that the delete button is a child element of the
       // todo's table row.
       var todoRow = clickedElement.closest("tr");
-      todoRow.html('<div class="alert alert-success">Todo deleted successfully</div>').fadeOut(1000);
+      todoRow.html('<div class="alert alert-success">Todo deleted successfully</div>').fadeOut(1000, function() { $(this).remove(); });
     };
 
     $.ajax(ajaxOptions).done(removeTodoFromDOM).fail(handleError);
+  };
+
+  function addTodoToDOM(data) {
+    var todoId = data.todo.id;
+    var deleteButton = '<a class="btn btn-success" data-delete-todo-button="true" data-todo-id="' + todoId + '" href="javascript:void(0);">Delete</a>'
+    var daysLeft = '7';
+    var todosTable = $("#todos");
+    var lastRowNumber = todosTable.find('tbody tr:last-child').find('td').html()
+    var rowNumber = parseInt(lastRowNumber) + 1;
+    var tableRow = '<tr><td>' + rowNumber + '</td><td>' + data.todo.description + '</td><td>' + daysLeft + '</td><td>' + deleteButton + '</td></tr>';
+    
+    todosTable.append(tableRow);
+    todosTable.show();
   };
 
   function clearForm() {
@@ -66,7 +79,7 @@
       data: JSON.stringify(todo)
     };
 
-    $.ajax(ajaxOptions).done([clearForm]).fail(handleError);
+    $.ajax(ajaxOptions).done([clearForm, addTodoToDOM]).fail(handleError);
   };
 
   function setupTodoHandlers() {
