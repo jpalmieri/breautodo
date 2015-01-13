@@ -5,7 +5,7 @@ Blocitoff::Application.routes.draw do
 
   root 'welcome#index'
 
-  resources :todos, only: [:new, :create, :index, :destroy]
+  resources :todos, only: [:create, :index, :destroy]
 
   namespace :api do
     namespace :v1 do
