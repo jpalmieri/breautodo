@@ -38,8 +38,17 @@
       // Assumes that the delete button is a child element of the
       // todo's table row.
       var todoRow = clickedElement.closest("tr");
+      var rowNumber = todoRow.find('td').html();
       todoRow.fadeOut("normal", function() { $(this).remove(); });
+      todoRow.nextAll('tr').find('td:first').each(function(i, rowIndex) { updateRows(rowIndex) });
+      
+      function updateRows(rowIndex) {
+        $(rowIndex).html(rowNumber);
+        rowNumber++;
+      };
     };
+
+
 
     $.ajax(ajaxOptions).done(removeTodoFromDOM).fail(handleError);
   };
