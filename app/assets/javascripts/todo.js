@@ -58,7 +58,7 @@
     var deleteButton = '<a class="btn btn-success" data-delete-todo-button="true" data-todo-id="' + todoId + '" href="javascript:void(0);">Delete</a>'
     var daysLeft = '7';
     var todosTable = $("#todos");
-    var lastRowNumber = todosTable.find('tbody tr:last-child').find('td').html()
+    var lastRowNumber = todosTable.find('tbody tr:last-child').find('td').html() || 0;
     var rowNumber = parseInt(lastRowNumber) + 1;
     var tableRow = '<tr><td>' + rowNumber + '</td><td>' + data.todo.description + '</td><td>' + daysLeft + '</td><td>' + deleteButton + '</td></tr>';
     
