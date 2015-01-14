@@ -64,6 +64,7 @@
     
     todosTable.append(tableRow);
     todosTable.show();
+    $('#no-todos').remove();
   };
 
   function clearForm() {
