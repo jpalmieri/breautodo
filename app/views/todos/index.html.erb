@@ -37,13 +37,13 @@
     </thead>
   </table>
 <% end %>
-<%= form_for @todos.new, :html => {:class => "form-horizontal center"} do |form| %>
+<%= form_for :todo, :html => {:class => "form-horizontal center"} do |form| %>
   <div class="form-group">
     <div class="col-md-10">
       <%= form.text_field :description, autofocus: true, placeholder: 'Description', class: 'form-control' %>
     </div>
     <div class="col-md-2">
-      <%= form.submit 'Add Todo', class: 'btn btn-success', data: { :"todo-id" => @todos.new.id, :"create-todo-button" => true } %>
+      <%= form.submit 'Add Todo', class: 'btn btn-success', data: { :"create-todo-button" => true } %>
     </div>
   </div>
 <% end %>
