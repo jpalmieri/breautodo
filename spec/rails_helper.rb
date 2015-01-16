@@ -7,6 +7,9 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'shoulda/matchers'
 require 'email_spec'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -31,6 +34,7 @@ ActiveRecord::Migration.check_pending!
 RSpec.configure do |config|
   # Include SignInHelper only in feature specs
   config.include SignInHelper, type: :feature
+  config.include AlertConfirmer, js: true
 
   # include email-spec helpers and matcher in all examples
   config.include(EmailSpec::Helpers)
