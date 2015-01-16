@@ -12,6 +12,7 @@ module SignInHelper
     within 'form' do
       click_button 'Sign in'
     end
+    expect( page ).to have_content("Signed in successfully.")
   end
   
 end

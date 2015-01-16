@@ -1,18 +1,16 @@
 require 'rails_helper'
 
-feature "View multiple todo items" do
+feature "View multiple todo items", js: true do
 
   before do
     user = create(:user)
     sign_in(user)
 
-    visit new_todo_path
     fill_in 'Description', with: "Buy groceries"
-    click_button 'Save'
+    click_button 'Add Todo'
 
-    visit new_todo_path
     fill_in 'Description', with: "Get haircut"
-    click_button 'Save'
+    click_button 'Add Todo'
   end
 
   scenario "successfully" do
