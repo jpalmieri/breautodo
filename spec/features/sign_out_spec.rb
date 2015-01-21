@@ -8,7 +8,7 @@ describe "Sign out flow" do
       sign_in(user)
 
       within '.user-info' do
-        click_link 'Sign out'
+        click_button 'Sign out'
       end
 
       expect(current_path).to eq root_path

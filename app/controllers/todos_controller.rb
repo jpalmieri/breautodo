@@ -1,11 +1,6 @@
 class TodosController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @todo = Todo.new
-    authorize @todo
-  end
-
   def index
     @todos = current_user.todos
     authorize @todos
@@ -18,7 +13,7 @@ class TodosController < ApplicationController
       redirect_to todos_path, notice: "Your new TODO was saved"
     else
       flash[:error] = "There was an error saving your todo: #{@todo.errors.full_messages.first}"
-      redirect_to new_todo_path
+      redirect_to todos_path
     end
   end
 
@@ -29,7 +24,7 @@ class TodosController < ApplicationController
       redirect_to todos_path, notice: "Todo deleted successfully"
     else
       flash[:error] = "There was an error deleting your todo. Please try again."
-      redirect_to new_todo_path
+      redirect_to todos_path
     end
   end
 
