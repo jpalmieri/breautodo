@@ -17,7 +17,7 @@
 
   function deleteTodo(event) {
     event.preventDefault();
-    
+
     // Get the delete button that was clicked (event.target) and
     // wrap it in a jQuery object.
     var clickedElement = $(event.target);
@@ -41,7 +41,7 @@
       var rowNumber = todoRow.find('td').html();
       todoRow.fadeOut("normal", function() { $(this).remove(); });
       todoRow.nextAll('tr').find('td:first').each(function(i, rowIndex) { updateRows(rowIndex) });
-      
+
       function updateRows(rowIndex) {
         $(rowIndex).html(rowNumber);
         rowNumber++;
@@ -55,13 +55,13 @@
 
   function addTodoToDOM(data) {
     var todoId = data.todo.id;
-    var deleteButton = '<a class="btn btn-success" data-delete-todo-button="true" data-todo-id="' + todoId + '" href="javascript:void(0);">Delete</a>'
+    var deleteButton = '<a data-delete-todo-button="true" data-todo-id="' + todoId + '" href="javascript:void(0);">Delete</a>'
     var daysLeft = '7';
     var todosTable = $("#todos");
     var lastRowNumber = todosTable.find('tbody tr:last-child').find('td').html() || 0;
     var rowNumber = parseInt(lastRowNumber) + 1;
     var tableRow = '<tr><td>' + rowNumber + '</td><td>' + data.todo.description + '</td><td>' + daysLeft + '</td><td>' + deleteButton + '</td></tr>';
-    
+
     todosTable.append(tableRow);
     todosTable.show();
     $('#no-todos').remove();
