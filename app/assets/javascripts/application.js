@@ -13,5 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap
 //= require_tree .
+
+(function($) {
+  // fadeout alerts when user clicks close button
+  $(document).on('click', '.alert .close', function() { $(this).parent('.alert').fadeOut('normal'); });
+})(jQuery);
