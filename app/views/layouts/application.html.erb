@@ -3,7 +3,7 @@
   <head>
     <title>Blocitoff</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <% if user_signed_in? %>
@@ -20,7 +20,7 @@
            <% if user_signed_in? %>
              Hello <%= current_user.email %>! <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-success' %>
            <% else %>
-             <%= link_to "Sign In", new_user_session_path %> or 
+             <%= link_to "Sign In", new_user_session_path %> or
              <%= link_to "Sign Up", new_user_registration_path %>
            <% end %>
          </div>
