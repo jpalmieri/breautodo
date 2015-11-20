@@ -3,17 +3,17 @@
   function handleError(error) {
     // Relies on error response from API being JSON object like:
     // { errors: [ "Error message", "Another error message" ] }
-    var errorsObj = $.parseJSON(error.responseText)
+    var errorsObj = $.parseJSON(error.responseText);
     var errorMessages = errorsObj.errors;
     alert("There was an error: " + errorMessages);
-  };
+  }
 
   function getAuthToken() {
     // meta tag in <head> holds auth token
     // <meta name="auth-token" content="TOKEN GOES HERE">
     var authToken = $("meta[name=auth-token]").attr("content");
     return authToken;
-  };
+  }
 
   function deleteTodo(event) {
     event.preventDefault();
@@ -40,22 +40,22 @@
       var todoRow = clickedElement.closest("tr");
       var rowNumber = todoRow.find('td').html();
       todoRow.fadeOut("normal", function() { $(this).remove(); });
-      todoRow.nextAll('tr').find('td:first').each(function(i, rowIndex) { updateRows(rowIndex) });
+      todoRow.nextAll('tr').find('td:first').each(function(i, rowIndex) { updateRows(rowIndex); });
 
       function updateRows(rowIndex) {
         $(rowIndex).html(rowNumber);
         rowNumber++;
-      };
-    };
+      }
+    }
 
 
 
     $.ajax(ajaxOptions).done(removeTodoFromDOM).fail(handleError);
-  };
+  }
 
   function addTodoToDOM(data) {
     var todoId = data.todo.id;
-    var deleteButton = '<a data-delete-todo-button="true" data-todo-id="' + todoId + '" href="javascript:void(0);">Delete</a>'
+    var deleteButton = '<a data-delete-todo-button="true" data-todo-id="' + todoId + '" href="javascript:void(0);">Delete</a>';
     var daysLeft = '7';
     var todosTable = $("#todos");
     var lastRowNumber = todosTable.find('tbody tr:last-child').find('td').html() || 0;
@@ -65,13 +65,13 @@
     todosTable.append(tableRow);
     todosTable.show();
     $('#no-todos').remove();
-  };
+  }
 
   function clearForm() {
     //clear input field
     var descriptionInput = $("#todo_description");
     descriptionInput.val("");
-  };
+  }
 
   function createTodo(event) {
     event.preventDefault();
@@ -90,12 +90,12 @@
     };
 
     $.ajax(ajaxOptions).done([clearForm, addTodoToDOM]).fail(handleError);
-  };
+  }
 
   function setupTodoHandlers() {
     $(document).on("click", "[data-delete-todo-button]", deleteTodo);
     $(document).on("click", "[data-create-todo-button]", createTodo);
-  };
+  }
   setupTodoHandlers();
 
 })(jQuery);
