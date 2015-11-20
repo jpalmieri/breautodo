@@ -1,0 +1,33 @@
+- if @todos.first
+  %table#todos.table.table-striped
+    %thead
+      %h4
+        %tr
+          %td #
+          %td Description
+          %td Days Left
+          %td
+    - @todos.each_with_index do |todo, i|
+      %tr
+        %td= i+1
+        %td= todo.description
+        %td.days-left= todo.days_left.ceil
+        %td= button_to "Delete", todo, method: :delete, class: 'btn btn-success', data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
+- else
+  #no-todos
+    %h3 No todos yet.
+    Enter a description of your task in the box below.
+  %table#todos.table.table-striped
+    %thead
+      %h4
+        %tr
+          %td #
+          %td Description
+          %td Days Left
+          %td
+= form_for :todo, :html => {:class => "form-horizontal center"} do |form|
+  .form-group
+    .col-md-10
+      = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'form-control'
+    .col-md-2
+      = form.submit 'Add Todo', class: 'btn btn-success', data: { :"create-todo-button" => true }

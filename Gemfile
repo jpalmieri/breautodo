@@ -9,6 +9,7 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'pundit'
 gem 'whenever', :require => false
 gem 'active_model_serializers'
+gem 'haml-rails', '~> 0.9'
 
 group :development, :test do
   gem 'rspec-rails'
