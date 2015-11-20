@@ -23,7 +23,6 @@ feature "View multiple todo items", js: true do
 
   scenario "without seeing '0' in 'days left' column" do
     Timecop.freeze(Time.now + 6.5.days) do
-      visit todos_path
       expect( first('.days-left') ).to_not have_content("0")
     end
   end

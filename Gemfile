@@ -5,7 +5,6 @@ gem 'rails', '4.0.10'
 
 gem 'devise'
 gem 'figaro', '1.0'
-gem 'bootstrap-sass', '~> 3.3.1'
 gem 'pundit'
 gem 'whenever', :require => false
 gem 'active_model_serializers'
