@@ -1,4 +1,5 @@
 Blocitoff::Application.routes.draw do
+  get "about/index"
   devise_for :users
 
   root 'welcome#index'
