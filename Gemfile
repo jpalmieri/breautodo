@@ -13,6 +13,7 @@ gem 'haml-rails', '~> 0.9'
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'pry'
 end
 
 # Use sqlite3 as the database for Active Record

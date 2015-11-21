@@ -18,12 +18,12 @@ feature 'User signs up' do
     fill_in 'Email', with: @valid_email
     fill_in 'Password', with: @valid_password
     fill_in 'Password confirmation',with: @valid_password
-    
+
     within 'form' do
       click_button 'Sign up'
     end
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq new_user_session_path
     expect( page ).to have_content('A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
 
     open_email(@valid_email)
@@ -68,5 +68,5 @@ feature 'User signs up' do
     expect(current_path).to eq user_registration_path
     expect( page ).to have_content("1 error prohibited this user from being saved: Email is invalid")
   end
- 
+
 end

@@ -36,13 +36,13 @@ module AlertConfirmer
 
       if wait_for_call
         timed_out = false
-        timeout_after = Time.now + Capybara.default_wait_time
+        timeout_after = Time.now + Capybara.default_max_wait_time
         loop do
           if page.evaluate_script(modal_called).nil?
             raise 'appears that page has changed since this method has been called, please assert on page before calling this'
           end
-          
-          break if page.evaluate_script(modal_called) || 
+
+          break if page.evaluate_script(modal_called) ||
             (timed_out = Time.now > timeout_after)
 
           sleep 0.001

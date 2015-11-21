@@ -11,15 +11,16 @@
       %meta{:content => "#{current_user.auth_token}", :name => "auth-token"}/
   %body
     %ul
-      %li= link_to "Home", root_path
-      %li= link_to "Todos", todos_path
+      %li= link_to 'About', about_index_path
+      - if !current_page?(todos_path)
+        %li= link_to "Todos", todos_path
       .user-info
         - if user_signed_in?
-          Hello #{current_user.email}! #{button_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-success'}
+          #{current_user.email} #{button_to "Sign out", destroy_user_session_path, method: :delete}
         - else
           = link_to "Sign In", new_user_session_path
           or
-          \#{link_to "Sign Up", new_user_registration_path}
+          = link_to "Sign Up", new_user_registration_path
     - if flash[:notice]
       .alert.alert-success
         %button.close{"data-dismiss" => "alert", :type => "button"} ×

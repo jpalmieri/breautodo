@@ -1,7 +1,6 @@
 Blocitoff::Application.routes.draw do
+  get "about/index"
   devise_for :users
-
-  get "welcome/index"
 
   root 'welcome#index'
 
