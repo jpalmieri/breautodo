@@ -11,7 +11,6 @@
       %meta{:content => "#{current_user.auth_token}", :name => "auth-token"}/
   %body
     %ul
-      %li= link_to "Home", root_path
       - if !current_page?(todos_path)
         %li= link_to "Todos", todos_path
       .user-info
