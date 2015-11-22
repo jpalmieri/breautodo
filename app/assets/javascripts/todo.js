@@ -55,7 +55,7 @@
 
   function addTodoToDOM(data) {
     var todoId = data.todo.id;
-    var deleteButton = '<a data-delete-todo-button="true" data-todo-id="' + todoId + '" href="javascript:void(0);">Delete</a>';
+    var deleteButton = '<input type="submit" data-delete-todo-button="true" data-todo-id="' + todoId + '" value="Delete">';
     var daysLeft = '7';
     var todosTable = $("#todos");
     var lastRowNumber = todosTable.find('tbody tr:last-child').find('td').html() || 0;
