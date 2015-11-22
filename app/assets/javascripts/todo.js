@@ -37,6 +37,7 @@
     function removeTodoFromDOM() {
       // Assumes that the delete button is a child element of the
       // todo's table row.
+      clickedElement.blur();
       var todoRow = clickedElement.closest("tr");
       var rowNumber = todoRow.find('td').html();
       todoRow.fadeOut("normal", function() { $(this).remove(); });
@@ -75,6 +76,7 @@
 
   function createTodo(event) {
     event.preventDefault();
+    event.target.blur()
 
     var descriptionInput = $("#todo_description");
     var description = descriptionInput.val();
