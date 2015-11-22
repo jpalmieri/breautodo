@@ -9,7 +9,7 @@
     - @todos.each_with_index do |todo, i|
       %tr
         %td= i+1
-        %td= todo.description
+        %td.description= todo.description
         %td.days-left= todo.days_left.ceil
         %td= button_to "Delete", todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
 - else
