@@ -1,12 +1,11 @@
 - if @todos.first
   %table#todos
     %thead
-      %h4
-        %tr
-          %td #
-          %td Description
-          %td Days Left
-          %td
+      %tr
+        %td #
+        %td Description
+        %td Days Left
+        %td
     - @todos.each_with_index do |todo, i|
       %tr
         %td= i+1
