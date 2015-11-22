@@ -23,6 +23,6 @@
         %td Description
         %td Days Left
         %td
-= form_for :todo do |form|
-  = form.text_field :description, autofocus: true, placeholder: 'Description'
-  = form.submit 'Add Todo', data: { :"create-todo-button" => true }
+= form_for :todo, html: {class: 'add-todo'} do |form|
+  = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
+  = form.submit 'Add Todo', data: { :"create-todo-button" => true }, class: 'add-todo-button'
