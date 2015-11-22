@@ -20,8 +20,6 @@
             #{current_user.email} #{button_to "Sign out", destroy_user_session_path, method: :delete}
           - else
             = link_to "Sign In", new_user_session_path
-            or
-            = link_to "Sign Up", new_user_registration_path
       - if flash[:notice]
         .alert.alert-success
           %button.close{"data-dismiss" => "alert", :type => "button"} ×

@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'User signs up' do
 
   before do
-    visit root_path
-    within '.user-info' do
-      click_link 'Sign Up'
+    visit new_user_session_path
+    within 'form' do
+      click_link 'Sign up'
     end
     fill_in 'Name', with: "Robert Paulson"
     @valid_email = "robertpaulson@example.com"
