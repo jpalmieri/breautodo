@@ -13,8 +13,7 @@
     %section
       %aside
         %p= link_to 'About', about_index_path
-        - if !current_page?(todos_path)
-          %p= link_to "Todos", todos_path
+        %p= link_to "Todos", todos_path
         .user-info
           - if user_signed_in?
             #{current_user.email} #{button_to "Sign out", destroy_user_session_path, method: :delete}
