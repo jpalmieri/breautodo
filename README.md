@@ -49,10 +49,12 @@ Use Figraro to update the environment variables:
 Push the repo to heroku:
 `git push heroku master`
 
+Install gems: `$ bundle install`
+
 Run the migrations:
 ```
-rake db:migrate
-heroku run rake db:migrate
+bundle exec rake db:migrate
+heroku run bundle exec rake db:migrate
 ```
 
 Run `$ rails s` and go to `localhost:3000` to view the local server, or simply go to the url listed in the Heroku output to view your app (run `heroku apps:info` to get the url).
