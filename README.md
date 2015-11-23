@@ -8,53 +8,53 @@ This app allows each user to create a private todo list. Each todo list item wil
 Installation
 =====
 
-1. Clone the repo:
+Clone the repo:
 ```
 $ git clone https://github.com/jpalmieri/blocitoff.git
 ```
 
-2. Open the new directory: `$ cd blocitoff`
+Open the new directory: `$ cd blocitoff`
 
-3. Create an `application.yml` file for your environment variables (by copying the example file):
+Create an `application.yml` file for your environment variables (by copying the example file):
 ```
 $ cp config/application.example.yml config/application.yml
 ```
 
-4. Generate a secret key for Devise authentication: `$ rake secret`
+Generate a secret key for Devise authentication: `$ rake secret`
 
-5. Copy and paste the secret next to `SECRET_KEY_BASE: `, like so:
+Copy and paste the secret next to `SECRET_KEY_BASE: `, like so:
 ```
 SECRET_KEY_BASE: XXXXXXXXXXXXXXX
 ```
 
 and save the file.
 
-6. After logging into your (verified*) Heroku account, create a Heroku app:
+After logging into your (verified*) Heroku account, create a Heroku app:
 `$ heroku create`
 
-7. Add Sendgrid to Heroku:
+Add Sendgrid to Heroku:
 `$ heroku addons:add sendgrid:starter`
 
-8. Get Sendgrid credentials:
+Get Sendgrid credentials:
 ```
 $ heroku config:get SENDGRID_USERNAME
 $ heroku config:get SENDGRID_PASSWORD
 ```
 
-9. Add the Sendgrid username and password to `config/application.yml` and save the file.
+Add the Sendgrid username and password to `config/application.yml` and save the file.
 
-10. Use Figraro to update the environment variables:
+Use Figraro to update the environment variables:
 `figaro heroku:set -e production`
 
-11. Push the repo to heroku:
+Push the repo to heroku:
 `git push heroku master`
 
-12. Run the migrations:
+Run the migrations:
 ```
 rake db:migrate
 heroku run rake db:migrate
 ```
 
-13. Run `$ rails s` and go to `localhost:3000` to view the local server, or simply go to the url listed in the Heroku output to view your app (run `heroku apps:info` to get the url).
+Run `$ rails s` and go to `localhost:3000` to view the local server, or simply go to the url listed in the Heroku output to view your app (run `heroku apps:info` to get the url).
 
 *You can find information on verifying a Heroku account here: [https://devcenter.heroku.com/articles/account-verification](https://devcenter.heroku.com/articles/account-verification)
