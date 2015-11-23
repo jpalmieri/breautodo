@@ -61,7 +61,7 @@
     var todosTable = $("#todos");
     var lastRowNumber = todosTable.find('tbody tr:last-child').find('td').html() || 0;
     var rowNumber = parseInt(lastRowNumber) + 1;
-    var tableRow = '<tr><td>' + rowNumber + '</td><td>' + data.todo.description + '</td><td>' + daysLeft + '</td><td>' + deleteButton + '</td></tr>';
+    var tableRow = '<tr><td>' + rowNumber + '</td><td class="description">' + data.todo.description + '</td><td>' + daysLeft + '</td><td>' + deleteButton + '</td></tr>';
 
     todosTable.append(tableRow);
     todosTable.show();
