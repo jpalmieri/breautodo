@@ -11,15 +11,20 @@
       %meta{:content => "#{current_user.auth_token}", :name => "auth-token"}/
   %body
     %section.main
-      %aside.nav
-        %ul
-          %li= link_to 'About', about_index_path
-          %li= link_to "Todos", todos_path
-          - if user_signed_in?
-            %li= current_user.email
-            %li= button_to "Sign out", destroy_user_session_path, method: :delete
-          - else
-            %li= link_to "Sign In", new_user_session_path
+      .header-inner
+        .hamburger
+          = link_to "", "javascript:void(0);", class: "box-shadow-menu"
+        %aside.nav
+          %ul
+            %li.logo
+              = link_to 'Breautodo', 'https://github.com/jpalmieri/blocitoff-api', target: '_blank'
+            %li= link_to 'About', about_index_path
+            %li= link_to "Todos", todos_path
+            - if user_signed_in?
+              %li= current_user.email
+              %li= button_to "Sign out", destroy_user_session_path, method: :delete
+            - else
+              %li= link_to "Sign In", new_user_session_path
       - if flash[:notice]
         .alert.alert-success
           %button.close{"data-dismiss" => "alert", :type => "button"} ×
