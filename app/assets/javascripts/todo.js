@@ -37,6 +37,7 @@
     function removeTodoFromDOM() {
       // Assumes that the delete button is a child element of the
       // todo's table row.
+      clickedElement.blur();
       var todoRow = clickedElement.closest("tr");
       var rowNumber = todoRow.find('td').html();
       todoRow.fadeOut("normal", function() { $(this).remove(); });
@@ -55,12 +56,12 @@
 
   function addTodoToDOM(data) {
     var todoId = data.todo.id;
-    var deleteButton = '<a data-delete-todo-button="true" data-todo-id="' + todoId + '" href="javascript:void(0);">Delete</a>';
+    var deleteButton = '<input type="submit" data-delete-todo-button="true" data-todo-id="' + todoId + '" value="Delete">';
     var daysLeft = '7';
     var todosTable = $("#todos");
     var lastRowNumber = todosTable.find('tbody tr:last-child').find('td').html() || 0;
     var rowNumber = parseInt(lastRowNumber) + 1;
-    var tableRow = '<tr><td>' + rowNumber + '</td><td>' + data.todo.description + '</td><td>' + daysLeft + '</td><td>' + deleteButton + '</td></tr>';
+    var tableRow = '<tr><td>' + rowNumber + '</td><td class="description">' + data.todo.description + '</td><td>' + daysLeft + '</td><td>' + deleteButton + '</td></tr>';
 
     todosTable.append(tableRow);
     todosTable.show();
@@ -75,6 +76,7 @@
 
   function createTodo(event) {
     event.preventDefault();
+    event.target.blur()
 
     var descriptionInput = $("#todo_description");
     var description = descriptionInput.val();

@@ -9,7 +9,7 @@
     - @todos.each_with_index do |todo, i|
       %tr
         %td= i+1
-        %td= todo.description
+        %td.description= todo.description
         %td.days-left= todo.days_left.ceil
         %td= button_to "Delete", todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
 - else
@@ -18,15 +18,11 @@
     Enter a description of your task in the box below.
   %table#todos
     %thead
-      %h4
-        %tr
-          %td #
-          %td Description
-          %td Days Left
-          %td
-= form_for :todo do |form|
-  .form-group
-    .col-md-10
-      = form.text_field :description, autofocus: true, placeholder: 'Description'
-    .col-md-2
-      = form.submit 'Add Todo', data: { :"create-todo-button" => true }
+      %tr
+        %td #
+        %td Description
+        %td Days Left
+        %td
+= form_for :todo, html: {class: 'add-todo'} do |form|
+  = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
+  = form.submit 'Add Todo', data: { :"create-todo-button" => true }, class: 'add-todo-button'

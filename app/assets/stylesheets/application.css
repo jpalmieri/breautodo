@@ -11,26 +11,3 @@
  *= require_self
  *= require_tree .
  */
-
-@import 'susy';
-
-section {
-  @include susy-breakpoint(64em, 12) {
-    @include container;
-    max-width: 64em;
-    aside {
-      @include span(3 of 12);
-    }
-    article {
-      @include span(9 of 12 last);
-    }
-  }
-}
-
-thead {
-  font-weight: bold;
-}
-
-input {
-  margin-bottom: 6px;
-}

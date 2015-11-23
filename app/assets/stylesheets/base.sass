@@ -1,0 +1,56 @@
+$gray: #DCDCDC
+$darkGray: #757575
+$black: #222
+$lightGray: #F2F2F2
+$lighterGray: #F8F8F8
+
+$color1: #F4A460 //sandy brown
+$color2: #B2E0E6 // powder blue
+
+body
+  font-family: sans-serif
+  font-weight: 100
+  letter-spacing: 0.01em
+
+  a
+    text-decoration: none
+  a:hover
+    text-decoration: underline
+
+  .logo
+    .color1
+      color: $color1
+    .color2
+      color: $color2
+    a:hover
+      text-decoration: none
+
+  input[type="text"]
+    display: inline-block
+    margin: 0
+    width: 100%
+    font-size: 1em
+    appearance: none
+    box-shadow: none
+    border-radius: none
+    padding: 0.5em
+    border: solid 1px $gray
+    transition: box-shadow 0.3s, border 0.3s
+    box-sizing: border-box
+  input[type="text"]:hover
+    border: solid 1px $darkGray
+  input[type="text"]:focus
+    outline: none
+    border: solid 1px $color2
+
+  input[type="submit"]
+    border: none
+    background-color: $lightGray
+    color: $darkGray
+    font-weight: 600
+    letter-spacing: .5
+    font-size: 1em
+    padding: .75em 1em
+  input[type="submit"]:hover
+    background-color: $lighterGray
+    color: $black

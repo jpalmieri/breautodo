@@ -10,16 +10,22 @@
     - if user_signed_in?
       %meta{:content => "#{current_user.auth_token}", :name => "auth-token"}/
   %body
-    %section
-      %aside
-        %p= link_to 'About', about_index_path
-        - if !current_page?(todos_path)
-          %p= link_to "Todos", todos_path
-        .user-info
-          - if user_signed_in?
-            #{current_user.email} #{button_to "Sign out", destroy_user_session_path, method: :delete}
-          - else
-            = link_to "Sign In", new_user_session_path
+    %section.main
+      .header-inner
+        .hamburger
+          = link_to "", "javascript:void(0);", class: "box-shadow-menu"
+        %aside.nav
+          %ul
+            %li.logo
+              %a{href: 'https://github.com/jpalmieri/blocitoff-api'}
+                <span class='color1'>Breau</span><span class='color2'>todo</span>
+            %li= link_to 'About', about_index_path
+            %li= link_to "Todos", todos_path
+            - if user_signed_in?
+              %li= current_user.email
+              %li= button_to "Sign out", destroy_user_session_path, method: :delete
+            - else
+              %li= link_to "Sign In", new_user_session_path
       - if flash[:notice]
         .alert.alert-success
           %button.close{"data-dismiss" => "alert", :type => "button"} ×

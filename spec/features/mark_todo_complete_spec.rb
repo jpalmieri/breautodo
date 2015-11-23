@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "Delete todo item", js: true do
-  
+
   scenario "successfully" do
     user = create(:user)
     sign_in(user)
@@ -11,7 +11,7 @@ feature "Delete todo item", js: true do
 
     expect( page ).to have_content("Buy groceries")
 
-    click_link 'Delete'
+    click_button 'Delete'
 
     expect( page ).to_not have_content("Buy groceries")
   end
