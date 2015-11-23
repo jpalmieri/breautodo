@@ -7,12 +7,12 @@ describe "Sign out flow" do
       user = create(:user)
       sign_in(user)
 
-      within '.user-info' do
+      within '.nav' do
         click_button 'Sign out'
       end
 
       expect(current_path).to eq new_user_session_path
-      expect(page).to have_css(".user-info", text: "Sign In")
+      expect(page).to have_css(".nav", text: "Sign In")
       expect(page).to_not have_css(".user-email")
     end
   end

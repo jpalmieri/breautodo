@@ -3,7 +3,7 @@ module SignInHelper
   def sign_in(user)
     visit root_path
 
-    within '.user-info' do
+    within '.nav' do
       click_link 'Sign In'
     end
     fill_in 'Email', with: user.email
@@ -14,5 +14,5 @@ module SignInHelper
     end
     expect( page ).to have_content("Signed in successfully.")
   end
-  
+
 end
