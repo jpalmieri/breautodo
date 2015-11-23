@@ -10,15 +10,16 @@
     - if user_signed_in?
       %meta{:content => "#{current_user.auth_token}", :name => "auth-token"}/
   %body
-    %section
-      %aside
-        %p= link_to 'About', about_index_path
-        %p= link_to "Todos", todos_path
-        .user-info
+    %section.main
+      %aside.nav
+        %ul
+          %li= link_to 'About', about_index_path
+          %li= link_to "Todos", todos_path
           - if user_signed_in?
-            #{current_user.email} #{button_to "Sign out", destroy_user_session_path, method: :delete}
+            %li= current_user.email
+            %li= button_to "Sign out", destroy_user_session_path, method: :delete
           - else
-            = link_to "Sign In", new_user_session_path
+            %li= link_to "Sign In", new_user_session_path
       - if flash[:notice]
         .alert.alert-success
           %button.close{"data-dismiss" => "alert", :type => "button"} ×

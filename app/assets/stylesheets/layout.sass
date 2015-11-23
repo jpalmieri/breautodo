@@ -1,10 +1,21 @@
 @import 'susy'
 
-section
-  @include susy-breakpoint(64em, 12)
+$mobile-width: 64em
+
+section.main
+
+  @include susy-breakpoint($mobile-width, 12)
     @include container
     max-width: 64em
-    aside
+    aside.nav
       @include span(3 of 12)
     article
       @include span(9 of 12 last)
+
+  aside.nav
+    ul
+      list-style-type: none
+      padding-left: 0
+      margin: 0
+      li
+        padding: .5em 0
