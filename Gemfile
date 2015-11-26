@@ -11,6 +11,7 @@ gem 'active_model_serializers'
 gem 'haml-rails', '~> 0.9'
 gem 'susy'
 gem 'autoprefixer-rails'
+gem 'data_migrate'
 
 group :development, :test do
   gem 'rspec-rails'
