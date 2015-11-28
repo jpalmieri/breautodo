@@ -2,7 +2,7 @@
   %table#todos
     %thead
       %tr
-        %td Description
+        %td.list-name= @list.name
         %td Days Left
         %td
     - @todos.each_with_index do |todo, i|
@@ -22,4 +22,4 @@
         %td
 = form_for :todo, html: {class: 'add-todo'} do |form|
   = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
-  = form.submit 'Add Todo', data: { :"create-todo-button" => true }, class: 'add-todo-button'
+  = form.submit 'Add Todo', data: { :"create-todo-button" => true, :"list-id" => @list.id }, class: 'add-todo-button'
