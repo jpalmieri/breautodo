@@ -12,6 +12,21 @@ class ListsController < ApplicationController
     @todos = @list.todos
   end
 
+  def new
+    @list = current_user.lists.new
+  end
+
+  def create
+    @list = current_user.lists.create(list_params)
+    authorize @list
+    if @list.persisted?
+      redirect_to list_path(@list.id), notice: "Your new list was saved"
+    else
+      flash[:error] = "There was an error saving your list: #{@list.errors.full_messages.first}"
+      redirect_to lists_path
+    end
+  end
+
   def edit
     @list = current_user.lists.find params[:id]
     authorize @list
