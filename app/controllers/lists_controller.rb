@@ -43,6 +43,17 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = current_user.lists.find params[:id]
+    authorize @list
+    if @list.destroy
+      redirect_to lists_path, notice: "List deleted successfully"
+    else
+      flash[:error] = "There was an error deleting your list. Please try again."
+      redirect_to lists_path
+    end
+  end
+
   private
 
   def list_params
