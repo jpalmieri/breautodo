@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "View multiple todo items", js: true do
+feature 'User creates todos', js: true do
 
   before do
     user = create(:user)
@@ -19,6 +19,14 @@ feature "View multiple todo items", js: true do
 
     expect( page ).to have_content("Buy groceries")
     expect( page ).to have_content("Get haircut")
+  end
+
+  scenario 'Unsuccessfully: no description' do
+    message = AlertConfirmer.get_alert_text_from do
+      click_button 'Add Todo'
+    end
+
+    expect( message ).to eq("There was an error: Description too short")
   end
 
   scenario "without seeing '0' in 'days left' column" do
