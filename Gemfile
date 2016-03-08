@@ -3,39 +3,39 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.10'
 
-gem 'devise'
+gem 'devise', '~> 3.4'
 gem 'figaro', '1.0'
-gem 'pundit'
+gem 'pundit', '~> 0.3'
 gem 'whenever', :require => false
 gem 'active_model_serializers'
 gem 'haml-rails', '~> 0.9'
-gem 'susy'
+gem 'susy', '~> 2.2'
 gem 'autoprefixer-rails'
-gem 'data_migrate'
+gem 'data_migrate', '~> 1.2'
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'capybara'
+  gem 'rspec-rails', '3.1'
+  gem 'capybara', '~> 2.5'
   gem 'pry'
 end
 
 # Use sqlite3 as the database for Active Record
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.17'
   gem 'rails_12factor'
 end
 
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3'
 end
 
 group :test do
-  gem 'poltergeist'
+  gem 'poltergeist', '~> 1.8'
   gem 'factory_girl_rails', '~> 4.0'
-  gem 'database_cleaner'
-  gem 'shoulda-matchers', require: false
-  gem 'email_spec'
-  gem 'timecop'
+  gem 'database_cleaner', '~> 1.3'
+  gem 'shoulda-matchers', '~> 2.7'
+  gem 'email_spec', '~> 1.6'
+  gem 'timecop', '~>0.7'
 end
 
 # Use SCSS for stylesheets
