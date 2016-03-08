@@ -60,4 +60,9 @@ class ListsController < ApplicationController
     params.require(:list).permit(:name)
   end
 
+  rescue_from ActiveRecord::RecordNotFound do
+    flash[:error] = "There was an error deleting your list. You are not authorized to delete this list."
+    redirect_to root_path
+  end
+
 end

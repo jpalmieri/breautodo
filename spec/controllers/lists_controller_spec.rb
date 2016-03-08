@@ -17,6 +17,14 @@ describe ListsController do
       should redirect_to lists_url
       should set_the_flash.to("List deleted successfully")
     end
+
+    it "does not allow a user to delete another user's list" do
+      sign_in @user2
+      delete :destroy, { id: @list.id }
+      should redirect_to root_url
+      should set_the_flash.to("There was an error deleting your list. You are not authorized to delete this list.")
+    end
+
   end
 
 end
