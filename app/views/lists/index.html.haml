@@ -1,0 +1,12 @@
+- if @lists.first
+  %table#lists
+    %thead
+      %tr
+        %td Todo Lists
+    - @lists.each do |list|
+      %tr
+        %td.name= link_to list.name, list_path(list.id)
+        %td
+          = link_to "<input type='submit' value='Edit'></input>".html_safe, edit_list_path(list.id)
+
+= link_to "<input type='submit' value='New List'></input>".html_safe, new_list_path

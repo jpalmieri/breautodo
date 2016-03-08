@@ -4,11 +4,12 @@ class Api::V1::TodosController < Api::ApiController
   def create
     user = User.find_by_auth_token(request.headers["Authorization"])
     description = params[:description]
+    list_id = params[:list_id]
 
     if description.length < 5
       render json: {errors: "Description too short"}, status: :not_acceptable
     elsif user
-      todo = user.todos.create(description: description)
+      todo = user.todos.create(description: description, list_id: list_id)
       render json: TodoSerializer.new(todo).to_json, status: :created
     else
       render json: {message: "Unauthorized"}, status: :unauthorized

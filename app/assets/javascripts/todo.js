@@ -72,7 +72,8 @@
 
     var descriptionInput = $("#todo_description");
     var description = descriptionInput.val();
-    var todo = { "description": description };
+    var listId = $(event.target).data('list-id');
+    var todo = { "description": description, 'list_id': listId };
 
     var ajaxOptions = {
       type: "POST",

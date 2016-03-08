@@ -20,7 +20,8 @@
               %a{href: 'https://github.com/jpalmieri/blocitoff-api'}
                 <span class='color1'>Breau</span><span class='color2'>todo</span>
             %li= link_to 'About', about_index_path
-            %li= link_to "Todos", todos_path
+            %li= link_to "Lists", lists_path
+            %li= link_to "All Todos", todos_path
             - if user_signed_in?
               %li= current_user.email
               %li= button_to "Sign out", destroy_user_session_path, method: :delete

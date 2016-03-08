@@ -7,7 +7,7 @@ describe "Sign in flow" do
       user = create(:user)
       sign_in(user)
 
-      expect(current_path).to eq todos_path
+      expect(current_path).to eq lists_path
       expect(page).to_not have_css(".nav", text: "Sign In")
       expect(page).to have_css(".nav", text: user.email)
     end

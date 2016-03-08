@@ -7,7 +7,7 @@ describe "Todos API" do
     it "should delete a todo" do
       user = create(:user)
       todo = create(:todo, user: user)
-      
+
       delete "/api/v1/todos/#{todo.id}", {}, "Authorization" => user.auth_token
 
       expect(response.status).to eq(204)
@@ -18,7 +18,7 @@ describe "Todos API" do
     it "prevents anonymous attacker from deleting" do
       user = create(:user)
       todo = create(:todo, user: user)
-      
+
       delete "/api/v1/todos/#{todo.id}", {}, "Authorization" => "made-up-token"
 
       expect(response.status).to eq(401)
@@ -53,21 +53,37 @@ describe "Todos API" do
   end
 
   context "POST create" do
+    before { @user = create(:user) }
 
-    it "should create a todo" do
-      user = create(:user)
+    context 'without a list id' do
+      it "should create a todo with nil list_id" do
+        post "/api/v1/todos", {description: "Finish Blocitoff"}, "Authorization" => @user.auth_token
 
-      post "/api/v1/todos", {description: "Finish Blocitoff"}, "Authorization" => user.auth_token
+        expect(response.status).to eq(201)
+        expect(json[:todo][:id]).to eq(Todo.last.id)
+        expect(json[:todo][:description]).to eq("Finish Blocitoff")
+        expect(json[:todo][:list_id]).to be_nil
+        expect(Todo.count).to eq(1)
+      end
+    end
 
-      expect(response.status).to eq(201)
-      expect(json[:todo][:id]).to eq(Todo.last.id)
-      expect(json[:todo][:description]).to eq("Finish Blocitoff")
-      expect(Todo.count).to eq(1)
+    context 'with a list id' do
+      before { @list = create(:list) }
+
+      it "should create a todo associated with that list" do
+        post "/api/v1/todos", {description: "Finish Blocitoff", list_id: @list.id}, "Authorization" => @user.auth_token
+
+        expect(response.status).to eq(201)
+        expect(json[:todo][:id]).to eq(Todo.last.id)
+        expect(json[:todo][:description]).to eq("Finish Blocitoff")
+        expect(json[:todo][:list_id]).to eq(@list.id)
+        expect(Todo.count).to eq(1)
+      end
     end
 
     it "prevents anonymous attacker from creating" do
       user = create(:user)
-      
+
       post "/api/v1/todos", {description: "Finish Blocitoff"}, "Authorization" => "fake-token"
 
       expect(response.status).to eq(401)
@@ -79,7 +95,7 @@ describe "Todos API" do
   end
 
   context "GET index" do
-    
+
     it "should show a list of todos" do
       user = create(:user)
       todo1 = create(:todo, user: user)

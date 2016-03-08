@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :auth_token, presence: :true
 
   has_many :todos, dependent: :destroy
+  has_many :lists, dependent: :destroy
 
   before_validation :generate_auth_token, on: :create
 
