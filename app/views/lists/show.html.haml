@@ -17,7 +17,7 @@
   %table#todos
     %thead
       %tr
-        %td Description
+        %td.list-name= @list.name
         %td Days Left
         %td
 = form_for :todo, html: {class: 'add-todo'} do |form|
