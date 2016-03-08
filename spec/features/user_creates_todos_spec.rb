@@ -5,6 +5,8 @@ feature 'User creates todos', js: true do
   before do
     user = create(:user)
     sign_in(user)
+    list = create(:list, user: user)
+    visit list_path 1
 
     fill_in 'Description', with: "Buy groceries"
     click_button 'Add Todo'
@@ -15,7 +17,7 @@ feature 'User creates todos', js: true do
 
   scenario "successfully" do
 
-    expect(current_path).to eq(todos_path)
+    expect(current_path).to eq(list_path 1)
 
     expect( page ).to have_content("Buy groceries")
     expect( page ).to have_content("Get haircut")
