@@ -1,9 +1,10 @@
 @import 'susy'
+@import 'flash_messages'
 
 $desktop-width: 64em
 
 section.main
-
+  margin: 8px
   .header-inner
     aside.nav
       height: auto
@@ -38,6 +39,7 @@ section.main
         height: 0.15em
         background: black
         box-shadow: 0 0.25em 0 0 black, 0 0.5em 0 0 black
+
 
   @include susy-breakpoint($desktop-width, 12)
     @include container
