@@ -1,12 +1,12 @@
 - if flash[:notice]
   .alert.alert-success
-    %span.close{'data-dismiss' => 'alert', type: 'button'} ×
-    = flash[:notice]
+    .alert-container
+      = flash[:notice]
 - elsif flash[:error]
   .alert.alert-danger
-    %span.close{"data-dismiss" => 'alert', type: 'button'} ×
-    = flash[:error]
+    .alert-container
+      = flash[:error]
 - elsif flash[:alert]
-  .alert.alert-warning
-    %span.close{'data-dismiss' => 'alert', type: 'button'} ×
-    = flash[:alert]
+  .alert-container
+    .alert.alert-warning
+      = flash[:alert]

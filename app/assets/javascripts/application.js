@@ -16,9 +16,10 @@
 //= require_tree .
 
 (function($) {
-  // fadeout alerts when user clicks close button
-  $(document).on('click', '.alert .close', function() { $(this).parent('.alert').fadeOut('normal'); });
-
+  // Autohide flash messages
+  $(document).ready(function () {
+    $("div.alert").slideToggle(2000);
+  });
   // Hamburger nav toggle
   $(document).on('click', '.hamburger', function(event) {
     event.preventDefault();
