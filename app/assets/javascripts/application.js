@@ -18,7 +18,7 @@
 (function($) {
   // Autohide flash messages
   $(document).ready(function () {
-    $("div.alert").slideToggle(2000);
+    $("div.alert").delay(2000).slideToggle(800);
   });
   // Hamburger nav toggle
   $(document).on('click', '.hamburger', function(event) {
