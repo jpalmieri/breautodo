@@ -1,0 +1,21 @@
+@import 'susy'
+
+$desktop-width: 64em
+
+body
+  .alert
+    padding: .5em 0
+    font-style: italic
+    &.alert-success
+      background-color: #CEF2F7
+    &.alert-danger
+      background-color: #F2DEDE
+    &.alert-warning
+      background-color: #FFEDDD
+
+    .alert-container
+      margin: 4px 8px
+      @include susy-breakpoint($desktop-width, 12)
+        @include container
+        width: $desktop-width
+        margin: auto
