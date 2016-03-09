@@ -4,7 +4,7 @@
 $desktop-width: 64em
 
 section.main
-  margin: 8px
+  margin: 0.5em
   .header-inner
     aside.nav
       height: auto
@@ -41,7 +41,7 @@ section.main
         box-shadow: 0 0.25em 0 0 black, 0 0.5em 0 0 black
 
 
-  @include susy-breakpoint($desktop-width, 12)
+  @include susy-breakpoint($desktop-width + 1em, 12)
     @include container
     max-width: $desktop-width
     .header-inner
