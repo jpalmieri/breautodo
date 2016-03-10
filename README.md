@@ -32,6 +32,9 @@ and save the file.
 After logging into your (verified*) Heroku account, create a Heroku app:
 `$ heroku create`
 
+Get your new app's domain:
+`$ heroku domains`
+
 Add Sendgrid to Heroku:
 `$ heroku addons:add sendgrid:starter`
 
@@ -41,7 +44,7 @@ $ heroku config:get SENDGRID_USERNAME
 $ heroku config:get SENDGRID_PASSWORD
 ```
 
-Add the Sendgrid username and password to `config/application.yml` and save the file.
+Add the Sendgrid username and password and the Heroku Domain to `config/application.yml` and save the file.
 
 Use Figraro to update the environment variables:
 `figaro heroku:set -e production`
