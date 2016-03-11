@@ -1,9 +1,7 @@
-Blocitoff
+Breutodo
 ==========
 
-A self-destruction to-do list application. Made with my mentor at [Bloc](http://www.bloc.io).
-
-This app allows each user to create a private todo list. Each todo list item will expire after 7 days of being on the list, at which time it will be deleted. The days left before the todo is deleted is also shown on the list.
+A to-do list application. This was started as a project for [Bloc](http://www.bloc.io).
 
 Installation
 =====
