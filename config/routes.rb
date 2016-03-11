@@ -1,4 +1,4 @@
-Blocitoff::Application.routes.draw do
+Breautodo::Application.routes.draw do
   get "about/index"
   devise_for :users
 
