@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Todo do
-  
+
   before do
     @todo = create(:todo)
   end
@@ -14,13 +14,5 @@ describe Todo do
     it { expect(Todo.new).to validate_presence_of(:description) }
     it { expect(Todo.new).to ensure_length_of(:description).is_at_least(5) }
     it { expect(Todo.new).to validate_presence_of(:user_id) }
-  end
-
-  describe "#days_left" do
-
-    it "counts the number of days until a new todo is destroyed" do
-      expect( @todo.days_left.round ).to eq(7)
-    end
-
   end
 end
