@@ -57,11 +57,11 @@ describe "Todos API" do
 
     context 'without a list id' do
       it "should create a todo with nil list_id" do
-        post "/api/v1/todos", {description: "Finish Blocitoff"}, "Authorization" => @user.auth_token
+        post "/api/v1/todos", {description: "Finish Breautodo"}, "Authorization" => @user.auth_token
 
         expect(response.status).to eq(201)
         expect(json[:todo][:id]).to eq(Todo.last.id)
-        expect(json[:todo][:description]).to eq("Finish Blocitoff")
+        expect(json[:todo][:description]).to eq("Finish Breautodo")
         expect(json[:todo][:list_id]).to be_nil
         expect(Todo.count).to eq(1)
       end
@@ -71,11 +71,11 @@ describe "Todos API" do
       before { @list = create(:list) }
 
       it "should create a todo associated with that list" do
-        post "/api/v1/todos", {description: "Finish Blocitoff", list_id: @list.id}, "Authorization" => @user.auth_token
+        post "/api/v1/todos", {description: "Finish Breautodo", list_id: @list.id}, "Authorization" => @user.auth_token
 
         expect(response.status).to eq(201)
         expect(json[:todo][:id]).to eq(Todo.last.id)
-        expect(json[:todo][:description]).to eq("Finish Blocitoff")
+        expect(json[:todo][:description]).to eq("Finish Breautodo")
         expect(json[:todo][:list_id]).to eq(@list.id)
         expect(Todo.count).to eq(1)
       end
@@ -84,7 +84,7 @@ describe "Todos API" do
     it "prevents anonymous attacker from creating" do
       user = create(:user)
 
-      post "/api/v1/todos", {description: "Finish Blocitoff"}, "Authorization" => "fake-token"
+      post "/api/v1/todos", {description: "Finish Breautodo"}, "Authorization" => "fake-token"
 
       expect(response.status).to eq(401)
       expect(json[:message]).to eq("Unauthorized")
