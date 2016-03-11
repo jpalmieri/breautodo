@@ -3,12 +3,10 @@
     %thead
       %tr
         %td Description
-        %td Days Left
         %td
     - @todos.each_with_index do |todo, i|
       %tr
         %td.description= todo.description
-        %td.days-left= todo.days_left.ceil
         %td= button_to "Delete", todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
 - else
   #no-todos
@@ -18,7 +16,6 @@
     %thead
       %tr
         %td Description
-        %td Days Left
         %td
 = form_for :todo, html: {class: 'add-todo'} do |form|
   = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'

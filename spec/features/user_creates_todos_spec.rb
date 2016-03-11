@@ -30,10 +30,4 @@ feature 'User creates todos', js: true do
 
     expect( message ).to eq("There was an error: Description too short")
   end
-
-  scenario "without seeing '0' in 'days left' column" do
-    Timecop.freeze(Time.now + 6.5.days) do
-      expect( first('.days-left') ).to_not have_content("0")
-    end
-  end
 end
