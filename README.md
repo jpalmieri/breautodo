@@ -6,58 +6,78 @@ A to-do list application. This was started as a project for [Bloc](http://www.bl
 Installation
 =====
 
+_Note: This app is intended to use Heroku for production and Sendgrid to send emails, so you'll need to set both of those up unless you want to deploy this app some other way._
+
+## Initial Setup
+
 Clone the repo:
 ```
-$ git clone https://github.com/jpalmieri/blocitoff.git
+$ git clone https://github.com/jpalmieri/breautodo.git
 ```
 
-Open the new directory: `$ cd blocitoff`
+Open the new directory: `$ cd breautodo`
+
+Install Postgres (if not already installed) with [Homebrew](http://brew.sh/): `$ brew install postgrsql`
+
+Install gems: `$ bundle install`
+
+## Set Environment Variables
+
+This app is set up to use Heroku for production and Sendgrid to send emails, so you'll need to set both of those up.
+
+After logging into your ([verified](https://devcenter.heroku.com/articles/account-verification)) Heroku account, create a Heroku app:
+
+`$ heroku create`
 
 Create an `application.yml` file for your environment variables (by copying the example file):
 ```
 $ cp config/application.example.yml config/application.yml
 ```
 
-Generate a secret key for Devise authentication: `$ rake secret`
-
-Copy and paste the secret next to `SECRET_KEY_BASE: `, like so:
-```
-SECRET_KEY_BASE: XXXXXXXXXXXXXXX
-```
-
-and save the file.
-
-After logging into your (verified*) Heroku account, create a Heroku app:
-`$ heroku create`
-
-Get your new app's domain:
-`$ heroku domains`
-
 Add Sendgrid to Heroku:
 `$ heroku addons:add sendgrid:starter`
 
 Get Sendgrid credentials:
 ```
-$ heroku config:get SENDGRID_USERNAME
-$ heroku config:get SENDGRID_PASSWORD
+$ heroku config:get SENDGRID_USERNAME && heroku config:get SENDGRID_PASSWORD
 ```
 
-Add the Sendgrid username and password and the Heroku Domain to `config/application.yml` and save the file.
+Generate a secret key for Devise authentication: `$ bundle exec rake secret`
 
-Use Figraro to update the environment variables:
-`figaro heroku:set -e production`
+Get your new app's domain:
+`$ heroku domains`
 
-Push the repo to heroku:
-`git push heroku master`
-
-Install gems: `$ bundle install`
-
-Run the migrations:
+Copy and paste the secret, the Sendgrid credentials, and your app's domain into application.yml, like so:
 ```
-bundle exec rake db:migrate
-heroku run bundle exec rake db:migrate
+SENDGRID_USERNAME: yoursendgridusername
+SENDGRID_PASSWORD: yoursendgridpassword
+SECRET_KEY_BASE: yoursecret1234567
+APP_DOMAIN: something-awesome-12345.herokuapp.com
 ```
+and save the file.
 
-Run `$ rails s` and go to `localhost:3000` to view the local server, or simply go to the url listed in the Heroku output to view your app (run `heroku apps:info` to get the url).
+## Migrating and Deploying
 
-*You can find information on verifying a Heroku account here: [https://devcenter.heroku.com/articles/account-verification](https://devcenter.heroku.com/articles/account-verification)
+### Local
+
+Run the migrations: `$ bundle exec rake db:migrate`
+
+To start the server locally, run `$ bundle exec rails s` and go to `localhost:3000` in your browser to view the app.
+
+_Note: If you want to run tests locally, you'll need to install PhantomJS (for feature tests):_ `$ brew install phantomjs`
+
+### Depolying to Heroku
+
+Use Figraro to update the environment variables on Heroku:
+`$ figaro heroku:set -e production`
+
+Push the repo to Heroku:
+`$ git push heroku master`
+
+And run the migrations:
+`$ heroku run bundle exec rake db:migrate`
+
+Limit the [threads](https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#thread-safety):
+`$ heroku config:set MIN_THREADS=1 MAX_THREADS=1`
+
+And then go to your app's domain in your browser (hint: `$ heroku domains`).
