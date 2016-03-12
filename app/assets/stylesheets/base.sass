@@ -7,19 +7,23 @@ $lighterGray: #F8F8F8
 $color1: #F4A460 //sandy brown
 $color2: #B2E0E6 // powder blue
 
+$linkBlue: #0000EE
+
 body
   margin: 0
   // Safari button reset
-  input, textarea
+  input:not([type='checkbox']), textarea
     -webkit-appearance: none
     -webkit-border-radius: 0
 
-  font-family: sans-serif
-  font-weight: 100
-  letter-spacing: 0.01em
+  *
+    font-family: sans-serif
+    font-weight: 100
+    letter-spacing: 0.01em
 
   a
     text-decoration: none
+    color: $linkBlue
   a:hover
     text-decoration: underline
 
@@ -31,32 +35,38 @@ body
     a:hover
       text-decoration: none
 
-  input[type="text"]
-    display: inline-block
-    margin: 0
-    width: 100%
-    font-size: 1em
-    appearance: none
-    box-shadow: none
-    border-radius: none
-    padding: 0.5em
-    border: solid 1px $gray
-    transition: box-shadow 0.3s, border 0.3s
-    box-sizing: border-box
-  input[type="text"]:hover
-    border: solid 1px $darkGray
-  input[type="text"]:focus
-    outline: none
-    border: solid 1px $color2
+  input
+    &[type='text'], &[type='email'], &[type='password']
+      display: inline-block
+      margin: 0
+      width: 100%
+      font-size: 1em
+      appearance: none
+      box-shadow: none
+      border-radius: none
+      padding: 0.5em
+      border: solid 1px $gray
+      transition: box-shadow 0.3s, border 0.3s
+      box-sizing: border-box
+      &:hover
+        border: solid 1px $darkGray
+      &:focus
+        outline: none
+        border: solid 1px $color2
 
-  input[type="submit"]
-    border: none
-    background-color: $lightGray
-    color: $darkGray
-    font-weight: 600
-    letter-spacing: 0.05em
-    font-size: 1em
-    padding: .75em 1em
-  input[type="submit"]:hover
-    background-color: $lighterGray
-    color: $black
+    &[type='submit']
+      border: none
+      background-color: $lightGray
+      color: $darkGray
+      font-weight: 600
+      letter-spacing: 0.05em
+      font-size: 1em
+      padding: .75em 1em
+      &:hover
+        background-color: $lighterGray
+        color: $black
+
+  // Safari zoom fix
+  @media screen and (-webkit-min-device-pixel-ratio:0)
+    select, textarea, input
+      font-size: 16px

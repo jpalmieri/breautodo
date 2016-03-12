@@ -1,22 +1,15 @@
 - if @todos.first
+  %h3.list-header Description
   %table#todos
-    %thead
-      %tr
-        %td Description
-        %td
     - @todos.each_with_index do |todo, i|
       %tr
         %td.description= todo.description
         %td= button_to "Delete", todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
 - else
-  #no-todos
-    %h3 No todos yet.
-    Enter a description of your task in the box below.
+  %h3.list-header Description
   %table#todos
-    %thead
-      %tr
-        %td Description
-        %td
+  #no-todos
+    Enter a description of your task in the box below.
 = form_for :todo, html: {class: 'add-todo'} do |form|
   = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
   = form.submit 'Add Todo', data: { :"create-todo-button" => true }, class: 'add-todo-button'
