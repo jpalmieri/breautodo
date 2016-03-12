@@ -61,3 +61,8 @@ body
       &:hover
         background-color: $lighterGray
         color: $black
+
+  // Safari zoom fix
+  @media screen and (-webkit-min-device-pixel-ratio:0)
+    select, textarea, input
+      font-size: 16px
