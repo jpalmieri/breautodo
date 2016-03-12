@@ -1,16 +1,16 @@
 %h2 Sign in
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   = devise_error_messages!
-  .form-group
+  .form-row
     = f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email"
-  .form-group
+  .form-row
     = f.password_field :password, class: 'form-control', placeholder: "Password"
-  .form-group
+  .form-row
     = f.submit "Sign in", class: 'btn btn-success'
-  .form-group
+  .form-row
     - if devise_mapping.rememberable?
       = f.label :remember_me, class: 'checkbox' do
         = f.check_box :remember_me
         Remember me
-  .form-group
+  .form-row
     = render "devise/shared/links"
