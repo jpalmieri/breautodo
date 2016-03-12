@@ -51,9 +51,8 @@
   function addTodoToDOM(data) {
     var todoId = data.todo.id;
     var deleteButton = '<input type="submit" data-delete-todo-button="true" data-todo-id="' + todoId + '" value="Delete">';
-    var daysLeft = '7';
     var todosTable = $("#todos");
-    var tableRow = '<tr><td class="description">' + data.todo.description + '</td><td>' + daysLeft + '</td><td>' + deleteButton + '</td></tr>';
+    var tableRow = '<tr><td class="description">' + data.todo.description + '</td><td>' + deleteButton + '</td></tr>';
 
     todosTable.append(tableRow);
     todosTable.show();
