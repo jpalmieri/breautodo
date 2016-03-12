@@ -2,7 +2,8 @@
   %table#todos
     %thead
       %tr
-        %td.list-name= @list.name
+        %td
+          %h3.list-header= @list.name
         %td
     - @todos.each_with_index do |todo, i|
       %tr
@@ -10,12 +11,13 @@
         %td= button_to "Delete", todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
 - else
   #no-todos
-    %h3 No todos yet.
+    %h3.list-header No todos yet.
     Enter a description of your task in the box below.
   %table#todos
     %thead
       %tr
-        %td.list-name= @list.name
+        %td
+          %h3.list-header= @list.name
         %td
 = form_for :todo, html: {class: 'add-todo'} do |form|
   = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'

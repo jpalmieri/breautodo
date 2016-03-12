@@ -2,7 +2,8 @@
   %table#lists
     %thead
       %tr
-        %td Todo Lists
+        %td
+          %h3.list-header Todo Lists
     - @lists.each do |list|
       %tr
         %td.name= link_to list.name, list_path(list.id)
