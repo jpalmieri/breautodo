@@ -6,8 +6,9 @@ describe Todo do
     @todo = create(:todo)
   end
 
-  context "associations" do
+  describe Todo do
     it { expect(Todo.new).to belong_to(:user) }
+    it { expect(Todo.new).to belong_to(:list).touch(true) }
   end
 
   context "validations" do
