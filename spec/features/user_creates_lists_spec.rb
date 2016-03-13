@@ -13,7 +13,7 @@ feature 'User creates list', js: true do
     click_button 'Submit'
 
     expect(current_path).to eq(list_path 1)
-    expect( page ).to have_content('Fancy new list')
+    expect( page ).to have_content(/Fancy new list/i)
   end
 
   scenario 'Unsuccessfully: no description' do
