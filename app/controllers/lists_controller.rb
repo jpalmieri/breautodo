@@ -40,7 +40,7 @@ class ListsController < ApplicationController
       redirect_to lists_path, notice: "Your list was updated"
     else
       flash[:error] = "There was an error saving your list: #{@list.errors.full_messages.first}"
-      redirect_to list_path
+      redirect_to edit_list_path @list
     end
   end
 

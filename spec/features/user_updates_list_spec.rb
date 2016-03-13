@@ -21,4 +21,15 @@ feature 'User updates list', js: true do
     # updated list is first
     expect( find('#lists tr:first-child') ).to have_content('updated list')
   end
+
+  scenario 'Unsuccessfully: no description' do
+    within find('#lists tr:last-child') do
+      click_button('Edit')
+    end
+    fill_in "Name", with: ""
+    click_button 'Submit'
+
+    expect(current_path).to eq(edit_list_path 1)
+    expect( page ).to have_content("There was an error saving your list: Name can't be blank")
+  end
 end
