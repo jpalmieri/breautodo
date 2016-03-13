@@ -4,6 +4,7 @@ class ListsController < ApplicationController
   def index
     @lists = current_user.lists
     authorize @lists
+    @lists = @lists.sort_by(&:updated_at).reverse!
   end
 
   def show
