@@ -52,6 +52,7 @@ Copy and paste the secret, the Sendgrid credentials, and your app's domain into 
 SENDGRID_USERNAME: yoursendgridusername
 SENDGRID_PASSWORD: yoursendgridpassword
 SECRET_KEY_BASE: yoursecret1234567
+SENDER_EMAIL: youremailaddress@example.com  # Address you want Sendgrid emails to be sent from
 APP_DOMAIN: something-awesome-12345.herokuapp.com
 ```
 and save the file.
