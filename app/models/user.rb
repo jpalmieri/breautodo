@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   private
 
   def generate_auth_token
-    self.auth_token ||= Devise.friendly_token
+    self.auth_token = Devise.friendly_token
   end
 end
