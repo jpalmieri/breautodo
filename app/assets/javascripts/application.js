@@ -16,10 +16,12 @@
 //= require_tree .
 
 (function($) {
-  // Autohide flash messages
-  $(document).ready(function () {
-    $("div.alert").delay(2000).slideToggle(800);
+  // Slide up alert when user dismisses it
+  $(document).on('click', '.alert .close', function() {
+    $(this).closest('.alert-container').fadeOut(500);
+    $(this).closest('.alert').slideUp(800);
   });
+
   // Hamburger nav toggle
   $(document).on('click', '.hamburger', function(event) {
     event.preventDefault();
