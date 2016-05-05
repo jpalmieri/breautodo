@@ -13,6 +13,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'susy', '~> 2.2'
 gem 'autoprefixer-rails'
 gem 'data_migrate', '~> 1.2'
+gem 'rails_autolink'
 
 group :development, :test do
   gem 'rspec-rails', '3.1'
