@@ -54,7 +54,7 @@
     var todosTable = $("#todos");
     var tableRow = '<tr><td class="description">' + data.todo.description + '</td><td>' + deleteButton + '</td></tr>';
 
-    todosTable.append(tableRow);
+    todosTable.prepend(tableRow);
     todosTable.show();
     $('#no-todos').remove();
   }
