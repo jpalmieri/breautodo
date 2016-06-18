@@ -6,8 +6,8 @@ class Api::V1::TodosController < Api::ApiController
     description = params[:description]
     list_id = params[:list_id]
 
-    if description.length < 5
-      render json: {errors: "Description too short"}, status: :not_acceptable
+    if description.length == 0
+      render json: {errors: "No Description"}, status: :not_acceptable
     elsif user
       todo = user.todos.create(description: description, list_id: list_id)
       render json: TodoSerializer.new(todo).to_json, status: :created

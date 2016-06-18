@@ -28,6 +28,6 @@ feature 'User creates todos', js: true do
       click_button 'Add Todo'
     end
 
-    expect( message ).to eq("There was an error: Description too short")
+    expect( message ).to eq("There was an error: No Description")
   end
 end
