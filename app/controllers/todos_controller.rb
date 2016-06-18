@@ -31,7 +31,8 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:description)
+    todo_params = params.require(:todo).permit(:description)
+    todo_params[:description].strip!
   end
 
   rescue_from ActiveRecord::RecordNotFound do
