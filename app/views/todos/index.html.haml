@@ -9,7 +9,7 @@
   %h3.list-header Description
   %table#todos
   #no-todos
-    Enter a description of your task in the box below.
+    Enter a description of your todo in the box below.
 = form_for :todo, html: {class: 'add-todo'} do |form|
   = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
   = form.submit 'Add Todo', data: { :"create-todo-button" => true }, class: 'add-todo-button'
