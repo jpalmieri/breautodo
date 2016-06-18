@@ -1,15 +1,15 @@
+%h3.list-header= @list.name
+= form_for :todo, html: {class: 'add-todo'} do |form|
+  = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
+  = form.submit 'Add Todo', data: { :"create-todo-button" => true, :"list-id" => @list.id }, class: 'add-todo-button'
 - if @todos.first
-  %h3.list-header= @list.name
   %table#todos
     - @todos.each_with_index do |todo, i|
       %tr
         %td.description= auto_link(todo.description, html: {target: '_blank'})
         %td= button_to "Delete", todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
 - else
-  %h3.list-header= @list.name
   %table#todos
   #no-todos
     Enter a description of your task in the box below.
-= form_for :todo, html: {class: 'add-todo'} do |form|
-  = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
-  = form.submit 'Add Todo', data: { :"create-todo-button" => true, :"list-id" => @list.id }, class: 'add-todo-button'
+
