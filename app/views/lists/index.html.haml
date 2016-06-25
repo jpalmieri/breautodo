@@ -8,5 +8,4 @@
           = link_to "<input type='submit' value='Edit'></input>".html_safe, edit_list_path(list.id)
 - else
   #no-lists
-    Create a list by clicking the button below.
-= link_to "<input type='submit' value='New List'></input>".html_safe, new_list_path
+    No lists yet. <a href='#{new_list_path}'>Create a list</a> and add some todos to it!
