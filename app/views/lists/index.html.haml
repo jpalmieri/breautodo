@@ -5,8 +5,8 @@
       %tr
         %td.name= link_to list.name, list_path(list.id)
         %td
-          = link_to "<input type='submit' value='Edit'></input>".html_safe, edit_list_path(list.id)
+          = link_to 'Edit', edit_list_path(list.id), type: :button
 - else
   #no-lists
     No lists yet. <a href='#{new_list_path}'>Create a list</a> and add some todos to it!
-= link_to "<input type='submit' value='New List'></input>".html_safe, new_list_path
+= link_to 'New List', new_list_path, type: :button
