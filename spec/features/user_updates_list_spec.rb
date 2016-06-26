@@ -12,14 +12,14 @@ feature 'User updates list', js: true do
 
   scenario 'successfully: update name' do
     within find('#lists tr:last-child') do
-      click_button('Edit')
+      click_link 'Edit'
     end
     fill_in "Name", with: "updated list"
     click_button 'Submit'
 
     expect(current_path).to eq(lists_path)
     # updated list is first
-    expect( find('#lists tr:first-child') ).to have_content('updated list')
+    expect( find('#lists tr:nth-child(2)') ).to have_content('updated list')
   end
 
   scenario 'successfully: with new todo' do
@@ -34,12 +34,12 @@ feature 'User updates list', js: true do
     click_link "Lists"
 
     # updated list is first
-    expect( find('#lists tr:first-child') ).to have_content(@list1.name)
+    expect( find('#lists tr:nth-child(2)') ).to have_content(@list1.name)
   end
 
   scenario 'Unsuccessfully: no name' do
     within find('#lists tr:last-child') do
-      click_button('Edit')
+      click_link 'Edit'
     end
     fill_in "Name", with: ""
     click_button 'Submit'

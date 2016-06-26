@@ -1,4 +1,5 @@
+%h3.caps-header New List
 = form_for @list do |form|
   = form.text_field :name, autofocus: true, placeholder: 'Name'
   = form.submit 'Submit'
-= link_to "<input type='submit' value='Cancel'></input>".html_safe, lists_path
+  = link_to 'Cancel', lists_path, class: :btn

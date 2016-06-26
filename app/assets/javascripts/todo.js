@@ -71,7 +71,7 @@
 
     var descriptionInput = $("#todo_description");
     var description = descriptionInput.val();
-    var listId = $(event.target).data('list-id');
+    var listId = $(event.target).find('.add-todo-button').data('list-id');
     var todo = { "description": description, 'list_id': listId };
 
     var ajaxOptions = {
@@ -88,7 +88,8 @@
 
   function setupTodoHandlers() {
     $(document).on("click", "[data-delete-todo-button]", deleteTodo);
-    $(document).on("click", "[data-create-todo-button]", createTodo);
+    // $(document).on("click", "[data-create-todo-button]", createTodo);
+    $(document).on("submit", ".add-todo", createTodo);
   }
   setupTodoHandlers();
 

@@ -1,5 +1,5 @@
 = form_for @list do |form|
   = form.text_field :name, autofocus: true, placeholder: 'Name'
   = form.submit 'Submit'
-= button_to "Delete", list_path(@list.id), method: :delete
-= link_to "<input type='submit' value='Cancel'></input>".html_safe, lists_path
+  = link_to 'Delete', list_path(@list.id), method: :delete,  class: :btn
+  = link_to 'Cancel', lists_path, class: :btn
