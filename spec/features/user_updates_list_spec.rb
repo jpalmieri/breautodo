@@ -12,7 +12,7 @@ feature 'User updates list', js: true do
 
   scenario 'successfully: update name' do
     within find('#lists tr:last-child') do
-      click_button('Edit')
+      click_link 'Edit'
     end
     fill_in "Name", with: "updated list"
     click_button 'Submit'
@@ -39,7 +39,7 @@ feature 'User updates list', js: true do
 
   scenario 'Unsuccessfully: no name' do
     within find('#lists tr:last-child') do
-      click_button('Edit')
+      click_link 'Edit'
     end
     fill_in "Name", with: ""
     click_button 'Submit'

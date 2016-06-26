@@ -39,7 +39,7 @@ body
   input
     &[type='text'], &[type='email'], &[type='password']
       display: inline-block
-      margin: 0
+      margin: 0.5em 0
       width: 100%
       font-size: 1em
       appearance: none
@@ -55,17 +55,23 @@ body
         outline: none
         border: solid 1px $color2
 
-    &[type='submit']
-      border: none
-      background-color: $lightGray
-      color: $darkGray
-      font-weight: 600
-      letter-spacing: 0.05em
-      font-size: 1em
-      padding: .75em 1em
-      &:hover
-        background-color: $lighterGray
-        color: $black
+  input[type='submit'], a[type='button']
+    border: none
+    background-color: $lightGray
+    color: $darkGray
+    font-weight: 600
+    letter-spacing: 0.05em
+    font-size: 1em
+    padding: .75em 1em
+    &:hover
+      background-color: $lighterGray
+      color: $black
+      cursor: pointer
+      text-decoration: none
+
+  h3.caps-header
+    text-transform: uppercase
+    letter-spacing: 0.1em
 
   // Safari zoom fix
   @media screen and (-webkit-min-device-pixel-ratio:0)
