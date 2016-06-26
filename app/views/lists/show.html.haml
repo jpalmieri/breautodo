@@ -1,4 +1,9 @@
-%h3.caps-header= @list.name
+%table#header
+  %tr
+    %th
+      %h3.caps-header= @list.name
+    %th
+      = link_to 'Edit', edit_list_path(@list), class: :btn
 = form_for :todo, html: {class: 'add-todo'} do |form|
   = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
   = form.submit 'Add Todo', data: { :"create-todo-button" => true, :"list-id" => @list.id }, class: 'add-todo-button'
