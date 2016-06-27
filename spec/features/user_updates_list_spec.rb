@@ -28,7 +28,9 @@ feature 'User updates list', js: true do
     end
 
     fill_in 'Description', with: "new todo"
-    click_button 'Add Todo'
+    within(:css, 'form.add-todo') do
+      click_button '+'
+    end
 
     expect(current_path).to eq(list_path @list1)
     click_link "Lists"
