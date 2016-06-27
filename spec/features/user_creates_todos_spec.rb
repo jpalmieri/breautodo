@@ -9,10 +9,14 @@ feature 'User creates todos', js: true do
     visit list_path 1
 
     fill_in 'Description', with: "Buy groceries"
-    click_button 'Add Todo'
+    within(:css, 'form.add-todo') do
+      click_button '+'
+    end
 
     fill_in 'Description', with: "Get haircut"
-    click_button 'Add Todo'
+    within(:css, 'form.add-todo') do
+      click_button '+'
+    end
   end
 
   scenario "successfully" do
@@ -25,7 +29,9 @@ feature 'User creates todos', js: true do
 
   scenario 'Unsuccessfully: no description' do
     message = AlertConfirmer.get_alert_text_from do
-      click_button 'Add Todo'
+      within(:css, 'form.add-todo') do
+        click_button '+'
+      end
     end
 
     expect( message ).to eq("There was an error: No Description")

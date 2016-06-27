@@ -4,7 +4,7 @@
     - @todos.each_with_index do |todo, i|
       %tr
         %td.description= todo.description
-        %td= button_to "Delete", todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
+        %td= button_to '–', todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
 - else
   %h3.caps-header Description
   %table#todos

@@ -5,7 +5,7 @@ feature 'User creates list', js: true do
   before do
     user = create(:user)
     sign_in(user)
-    click_link 'New List'
+    click_link 'new-list-button'
   end
 
   scenario 'successfully' do

@@ -50,7 +50,7 @@
 
   function addTodoToDOM(data) {
     var todoId = data.todo.id;
-    var deleteButton = '<input type="submit" data-delete-todo-button="true" data-todo-id="' + todoId + '" value="Delete">';
+    var deleteButton = '<input type="submit" data-delete-todo-button="true" data-todo-id="' + todoId + '" value="–">';
     var todosTable = $("#todos");
     var tableRow = '<tr><td class="description">' + data.todo.description + '</td><td>' + deleteButton + '</td></tr>';
 
@@ -88,7 +88,6 @@
 
   function setupTodoHandlers() {
     $(document).on("click", "[data-delete-todo-button]", deleteTodo);
-    // $(document).on("click", "[data-create-todo-button]", createTodo);
     $(document).on("submit", ".add-todo", createTodo);
   }
   setupTodoHandlers();

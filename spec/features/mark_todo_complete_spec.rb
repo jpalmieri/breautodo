@@ -9,11 +9,13 @@ feature "Delete todo item", js: true do
     visit list_path 1
 
     fill_in 'Description', with: "Buy groceries"
-    click_button 'Add Todo'
+    within(:css, 'form.add-todo') do
+      click_button '+'
+    end
 
     expect( page ).to have_content("Buy groceries")
 
-    click_button 'Delete'
+    click_button '–'
 
     expect( page ).to_not have_content("Buy groceries")
   end
