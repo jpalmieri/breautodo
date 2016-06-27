@@ -12,7 +12,7 @@
     - @todos.each_with_index do |todo, i|
       %tr
         %td.description= auto_link(todo.description, html: {target: '_blank'})
-        %td= button_to "Delete", todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
+        %td= button_to '–', todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
 - else
   %table#todos
   #no-todos

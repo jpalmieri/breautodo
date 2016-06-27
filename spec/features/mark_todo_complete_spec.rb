@@ -15,7 +15,7 @@ feature "Delete todo item", js: true do
 
     expect( page ).to have_content("Buy groceries")
 
-    click_button 'Delete'
+    click_button '–'
 
     expect( page ).to_not have_content("Buy groceries")
   end
