@@ -2,7 +2,7 @@ class TodosController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @todos = current_user.todos
+    @todos = current_user.todos.newest
     authorize @todos
   end
 

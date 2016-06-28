@@ -10,7 +10,7 @@ class ListsController < ApplicationController
   def show
     @list = current_user.lists.find params[:id]
     authorize @list
-    @todos = @list.todos
+    @todos = @list.todos.newest
   end
 
   def new
