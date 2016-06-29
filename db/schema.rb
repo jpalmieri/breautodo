@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126051937) do
+ActiveRecord::Schema.define(version: 20160629054938) do
+
+  create_table "data_migrations", id: false, force: true do |t|
+    t.string "version", null: false
+  end
+
+  add_index "data_migrations", ["version"], name: "unique_data_migrations", unique: true
 
   create_table "lists", force: true do |t|
     t.string   "name",       null: false
@@ -27,7 +33,7 @@ ActiveRecord::Schema.define(version: 20151126051937) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "list_id"
+    t.integer  "list_id",     null: false
   end
 
   add_index "todos", ["list_id"], name: "index_todos_on_list_id"
