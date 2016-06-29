@@ -1,23 +1,29 @@
 require 'rails_helper'
 
 describe List do
+  let!(:first_list)  { create(:list) }
+  let!(:second_list) { create(:list) }
+  let!(:third_list)  { create(:list) }
+  let(:recently_updated_lists) {[second_list, third_list, first_list]}
 
-  before do
-    @list = create(:list)
-    5.times do
-      create(:todo, list: @list)
-    end
+  before { update_list(second_list) }
+
+  def update_list(list)
+    list.name = 'new name'
+    list.save!
   end
 
   context 'associations' do
-    it { expect(List.new).to belong_to(:user) }
-    it { expect(List.new).to have_many(:todos) }
+    it { should belong_to(:user) }
+    it { should have_many(:todos) }
   end
 
   context "validations" do
-    it { expect(List.new).to validate_presence_of(:name) }
-    it { expect(List.new).to validate_presence_of(:user_id) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:user_id) }
   end
 
-
+  context 'when :recently_updated scope' do
+    it { expect(List.recently_updated).to eq(recently_updated_lists) }
+  end
 end
