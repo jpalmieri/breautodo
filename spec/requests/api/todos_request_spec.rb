@@ -56,14 +56,13 @@ describe "Todos API" do
     before { @user = create(:user) }
 
     context 'without a list id' do
-      it "should create a todo with nil list_id" do
+      it "responds with a nil list error" do
         post "/api/v1/todos", {description: "Finish Breautodo"}, "Authorization" => @user.auth_token
 
-        expect(response.status).to eq(201)
-        expect(json[:todo][:id]).to eq(Todo.last.id)
-        expect(json[:todo][:description]).to eq("Finish Breautodo")
-        expect(json[:todo][:list_id]).to be_nil
-        expect(Todo.count).to eq(1)
+        expect(response.status).to eq(406)
+        expect(json[:errors]).to eq("No List")
+        expect(response.content_type).to eq("application/json")
+        expect(Todo.count).to eq(0)
       end
     end
 
@@ -83,8 +82,9 @@ describe "Todos API" do
 
     it "prevents anonymous attacker from creating" do
       user = create(:user)
+      list = create(:list)
 
-      post "/api/v1/todos", {description: "Finish Breautodo"}, "Authorization" => "fake-token"
+      post "/api/v1/todos", {description: "Finish Breautodo", list_id: list.id}, "Authorization" => "fake-token"
 
       expect(response.status).to eq(401)
       expect(json[:message]).to eq("Unauthorized")

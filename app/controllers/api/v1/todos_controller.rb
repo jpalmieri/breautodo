@@ -8,6 +8,8 @@ class Api::V1::TodosController < Api::ApiController
 
     if description.strip.length == 0
       render json: {errors: "No Description"}, status: :not_acceptable
+    elsif !list_id
+      render json: {errors: "No List"}, status: :not_acceptable
     elsif user
       todo = user.todos.create(description: description, list_id: list_id)
       render json: TodoSerializer.new(todo).to_json, status: :created
