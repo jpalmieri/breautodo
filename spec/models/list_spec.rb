@@ -15,7 +15,7 @@ describe List do
 
   context 'associations' do
     it { should belong_to(:user) }
-    it { should have_many(:todos) }
+    it { should have_many(:todos).dependent(:destroy) }
   end
 
   context "validations" do
