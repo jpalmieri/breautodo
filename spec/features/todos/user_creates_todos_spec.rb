@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 feature 'User creates todos', js: true do
+  let!(:user) { create(:user) }
+  let!(:list) { create(:list, user: user) }
 
   before do
-    user = create(:user)
     sign_in(user)
-    list = create(:list, user: user)
-    visit list_path 1
+    visit list_path(list)
 
     fill_in 'Description', with: 'first todo'
     within(:css, 'form.add-todo') do
@@ -19,9 +19,8 @@ feature 'User creates todos', js: true do
     end
   end
 
-  scenario "successfully" do
-
-    expect(current_path).to eq(list_path 1)
+  scenario 'successfully' do
+    expect(current_path).to eq(list_path list)
     expect( page ).to have_css(
       '#todos tr:first-child', text: 'second todo')
     expect( page ).to have_css(
@@ -35,6 +34,6 @@ feature 'User creates todos', js: true do
       end
     end
 
-    expect( message ).to eq("There was an error: No Description")
+    expect( message ).to eq('There was an error: No Description')
   end
 end
