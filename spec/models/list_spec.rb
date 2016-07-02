@@ -14,13 +14,13 @@ describe List do
   end
 
   context 'associations' do
-    it { should belong_to(:user) }
-    it { should have_many(:todos).dependent(:destroy) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:todos).dependent(:destroy) }
   end
 
   context "validations" do
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:user_id) }
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:user_id) }
   end
 
   context 'when :recently_updated scope' do

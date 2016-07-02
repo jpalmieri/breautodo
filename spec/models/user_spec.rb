@@ -4,8 +4,8 @@ describe User do
   let(:user) { build(:user) }
 
   context 'associations' do
-    it { should have_many(:todos).dependent(:destroy) }
-    it { should have_many(:lists).dependent(:destroy) }
+    it { is_expected.to have_many(:todos).dependent(:destroy) }
+    it { is_expected.to have_many(:lists).dependent(:destroy) }
   end
 
   context 'has auth_token' do

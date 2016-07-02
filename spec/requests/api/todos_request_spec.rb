@@ -4,7 +4,7 @@ describe "Todos API" do
 
   context "DELETE destroy" do
 
-    it "should delete a todo" do
+    it "deletes a todo" do
       user = create(:user)
       todo = create(:todo, user: user)
 
@@ -69,7 +69,7 @@ describe "Todos API" do
     context 'with a list id' do
       before { @list = create(:list) }
 
-      it "should create a todo associated with that list" do
+      it "creates a todo associated with that list" do
         post "/api/v1/todos", {description: "Finish Breautodo", list_id: @list.id}, "Authorization" => @user.auth_token
 
         expect(response.status).to eq(201)
@@ -96,7 +96,7 @@ describe "Todos API" do
 
   context "GET index" do
 
-    it "should show a list of todos" do
+    it "shows a list of todos" do
       user = create(:user)
       todo1 = create(:todo, user: user)
       todo2 = create(:todo, user: user)
@@ -111,7 +111,7 @@ describe "Todos API" do
       expect(response.content_type).to eq("application/json")
     end
 
-    it "should prevent an anonymous user from seeing a list of todos" do
+    it "prevents an anonymous user from seeing a list of todos" do
       user = create(:user)
       todo1 = create(:todo, user: user)
       todo2 = create(:todo, user: user)
