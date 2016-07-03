@@ -10,6 +10,14 @@ describe ListsController do
 
   before { sign_in signed_in_user }
 
+  describe 'PUT update' do
+    it 'allows a user to update own list' do
+      put :update, id: accessible_list.id, list: { name: 'new name' }
+      is_expected.to redirect_to lists_url
+      is_expected.to set_the_flash.to('Your list was updated')
+    end
+  end
+
   describe '#destroy' do
     it "allows a user to delete own list" do
       delete :destroy, { id: accessible_list.id }
