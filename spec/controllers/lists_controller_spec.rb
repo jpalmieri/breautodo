@@ -13,7 +13,7 @@ describe ListsController do
   describe 'PUT update' do
     it 'allows a user to update own list' do
       put :update, id: accessible_list.id, list: { name: 'new name' }
-      is_expected.to redirect_to lists_url
+      is_expected.to redirect_to list_url(accessible_list)
       is_expected.to set_the_flash.to('Your list was updated')
     end
   end

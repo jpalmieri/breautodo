@@ -21,7 +21,7 @@ class ListsController < ApplicationController
     @list = current_user.lists.create(list_params)
     authorize @list
     if @list.persisted?
-      redirect_to list_path(@list.id), notice: "Your new list was saved"
+      redirect_to list_path(@list.id), notice: 'Your new list was saved'
     else
       flash[:error] = "There was an error saving your list: #{@list.errors.full_messages.first}"
       redirect_to lists_path
@@ -37,7 +37,7 @@ class ListsController < ApplicationController
     @list = current_user.lists.find params[:id]
     authorize @list
     if @list.update_attributes(list_params)
-      redirect_to lists_path, notice: "Your list was updated"
+      redirect_to list_path(@list), notice: "Your list was updated"
     else
       flash[:error] = "There was an error saving your list: #{@list.errors.full_messages.first}"
       redirect_to edit_list_path @list
