@@ -16,7 +16,9 @@ feature 'User updates list', js: true do
     fill_in "Name", with: "updated list"
     click_button 'Submit'
 
-    expect(current_path).to eq(lists_path)
+    expect(current_path).to eq(list_path first_list)
+    click_link 'Lists'
+
     # updated list is first
     expect( find('#lists tr:nth-child(2)') ).to have_content('updated list')
   end
