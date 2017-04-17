@@ -7,6 +7,8 @@ describe Todo do
   describe 'associations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:list).touch(true) }
+    it { is_expected.to have_many(:taggings) }
+    it { is_expected.to have_many(:tags).through(:taggings) }
   end
 
   context 'validations' do

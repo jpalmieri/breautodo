@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629054938) do
+ActiveRecord::Schema.define(version: 20170417004510) do
 
   create_table "data_migrations", id: false, force: true do |t|
     t.string "version", null: false
@@ -27,6 +27,22 @@ ActiveRecord::Schema.define(version: 20160629054938) do
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id"
+
+  create_table "taggings", force: true do |t|
+    t.integer  "todo_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["todo_id"], name: "index_taggings_on_todo_id"
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "todos", force: true do |t|
     t.string   "description"
