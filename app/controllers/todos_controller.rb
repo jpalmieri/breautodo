@@ -35,6 +35,11 @@ class TodosController < ApplicationController
     todo_params[:description].strip!
   end
 
+  def tags_from_description(description)
+    tag_regex = /(?:|^)(?:#(?!.\d+(?:\s|$)))(\w+)(?=\s|$)/i
+    description.scan(tag_regex).flatten
+  end
+
   rescue_from ActiveRecord::RecordNotFound do
     flash[:error] = "There was an error deleting your todo. You are not authorized to delete this todo."
     redirect_to root_path
