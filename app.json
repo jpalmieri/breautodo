@@ -1,0 +1,6 @@
+{
+  "name": "Breautodo",
+  "description": "A todo list app using Rails 4",
+  "repository": "https://github.com/jpalmieri/breautodo",
+  "keywords": ["ruby", "rails", "todo"]
+}
