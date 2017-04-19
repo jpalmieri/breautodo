@@ -14,11 +14,7 @@ gem 'autoprefixer-rails'
 gem 'data_migrate', '~> 1.2'
 gem 'rails_autolink'
 
-group :development, :test do
-  gem 'rspec-rails', '3.2'
-  gem 'capybara', '~> 2.5'
-  gem 'pry'
-end
+gem 'pry', group: [:development, :test]
 
 # Use sqlite3 as the database for Active Record
 group :production do
@@ -32,12 +28,14 @@ group :development do
 end
 
 group :test do
-  gem 'poltergeist', '~> 1.8'
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'database_cleaner', '~> 1.3'
+  gem 'rspec-rails', '~> 3.5.0'
+  gem 'capybara', '~> 2.13.0'
+  gem 'poltergeist', '~> 1.14.0'
+  gem 'factory_girl_rails', '~> 4.8.0'
+  gem 'database_cleaner', '~> 1.5.0'
   gem 'shoulda-matchers', '~> 2.7'
-  gem 'email_spec', '~> 1.6'
-  gem 'timecop', '~>0.7'
+  gem 'email_spec', '~> 2.1.0'
+  gem 'timecop', '~> 0.8.0'
 end
 
 # Use SCSS for stylesheets
