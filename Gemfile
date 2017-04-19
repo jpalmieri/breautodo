@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.1.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.10'
@@ -16,7 +15,7 @@ gem 'data_migrate', '~> 1.2'
 gem 'rails_autolink'
 
 group :development, :test do
-  gem 'rspec-rails', '3.1'
+  gem 'rspec-rails', '3.2'
   gem 'capybara', '~> 2.5'
   gem 'pry'
 end
