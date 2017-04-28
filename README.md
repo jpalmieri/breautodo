@@ -4,7 +4,13 @@ Breutodo
 A to-do list application. This was started as a project for [Bloc](http://www.bloc.io).
 
 Installation
-=====
+=======
+
+Deploy to Heroku!
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+Or, manual installation instructions below.
 
 _Note: This app is intended to use Heroku for production and Sendgrid to send emails, so you'll need to set both of those up unless you want to deploy this app some other way._
 

@@ -1,0 +1,37 @@
+{
+  "name": "breautodo-heroku-button",
+  "description": "A todo list app using Rails 4",
+  "repository": "https://github.com/jpalmieri/breautodo",
+  "keywords": ["ruby", "rails", "todo"],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "success_url": "/",
+  "env": {
+    "SECRET_KEY_BASE": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "SENDER_EMAIL": {
+      "description": "Address to send emails from.",
+      "value": "breautodo@example.com"
+    },
+    "APP_DOMAIN": {
+      "description": "Domain of the app.",
+      "value": "breautodo-heroku-button.heroku.com"
+    },
+    "DEPLOY_BUTTON": {
+      "description": "Flag to note that this app was deployed via heroku button",
+      "value": "true"
+    },
+  },
+  "addons": [
+    "sendgrid:starter",
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.5"
+      }
+    }
+  ],
+}
