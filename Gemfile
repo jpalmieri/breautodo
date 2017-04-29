@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.10'
+gem 'rails', '4.1.16'
 
 gem 'devise', '~> 3.4'
 gem 'figaro', '1.0'
