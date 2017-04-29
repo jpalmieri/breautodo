@@ -11,7 +11,7 @@ gem 'whenever', :require => false
 gem 'active_model_serializers'
 gem 'haml-rails', '~> 0.9'
 gem 'susy', '~> 2.2'
-gem 'autoprefixer-rails'
+gem 'autoprefixer-rails', '~> 6.7.0'
 gem 'data_migrate', '~> 1.2'
 gem 'rails_autolink'
 
