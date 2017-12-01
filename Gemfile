@@ -4,7 +4,7 @@ ruby '2.3.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.7.1'
 
-gem 'devise', '4.0.3'
+gem 'devise', '4.1.0'
 gem 'figaro', '1.0'
 gem 'pundit', '~> 0.3'
 gem 'whenever', :require => false
