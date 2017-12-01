@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User signs up' do
   let(:valid_email)      { 'robertpaulson@example.com' }
-  let(:invalid_email)    { 'robertpaulson@example' }
+  let(:invalid_email)    { 'robert paulson@exam ple' }
   let(:valid_password)   { 'hellowworld' }
   let(:invalid_password) { '1234567' }
 
