@@ -3,6 +3,9 @@ Breutodo
 
 A to-do list application. This was started as a project for [Bloc](http://www.bloc.io).
 
+Demo at https://breautodo-demo.herokuapp.com.
+Login with demo@example.com, pw: "demodemo".
+
 Installation
 =======
 
