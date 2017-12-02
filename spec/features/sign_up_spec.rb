@@ -25,7 +25,6 @@ feature 'User signs up' do
 
     expect(current_path).to eq new_user_session_path
     expect( page ).to have_content('A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
-
     open_email(valid_email)
     expect(current_email).to have_body_text('You can confirm your account email through the link below:')
     click_first_link_in_email
