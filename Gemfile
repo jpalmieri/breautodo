@@ -37,6 +37,7 @@ group :test do
   gem 'shoulda-matchers', '~> 2.7'
   gem 'email_spec', '~> 2.1.0'
   gem 'timecop', '~> 0.8.0'
+  gem 'test_after_commit', '~> 1.1.0'
 end
 
 # Use SCSS for stylesheets
