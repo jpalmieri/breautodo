@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.7.1'
+gem 'rails', '~> 5.0.0'
 
 gem 'devise', '4.3.0'
 gem 'figaro', '1.0'
@@ -36,7 +36,6 @@ group :test do
   gem 'shoulda-matchers', '~> 2.7'
   gem 'email_spec', '~> 2.1.0'
   gem 'timecop', '~> 0.8.0'
-  gem 'test_after_commit', '~> 1.1.0'
 end
 
 # Use SCSS for stylesheets
@@ -46,7 +45,7 @@ gem 'sass-rails', '~> 5.0.0'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.2.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -55,7 +54,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails', '~> 4.3.1'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '~> 5.0.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
