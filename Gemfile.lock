@@ -272,7 +272,7 @@ DEPENDENCIES
   pundit (~> 0.3)
   rails (~> 4.2.7.1)
   rails_12factor
-  rails_autolink
+  rails_autolink (= 1.1.6)
   rspec-rails (~> 3.5.0)
   sass-rails (~> 5.0.0)
   sdoc
