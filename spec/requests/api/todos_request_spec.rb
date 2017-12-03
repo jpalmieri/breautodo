@@ -8,7 +8,7 @@ describe "Todos API" do
       user = create(:user)
       todo = create(:todo, user: user)
 
-      delete "/api/v1/todos/#{todo.id}", {}, "Authorization" => user.auth_token
+      delete "/api/v1/todos/#{ todo.id }", headers: { "Authorization" => user.auth_token }
 
       expect(response.status).to eq(204)
       # http://httpstatus.es :created, :no_content
@@ -19,7 +19,7 @@ describe "Todos API" do
       user = create(:user)
       todo = create(:todo, user: user)
 
-      delete "/api/v1/todos/#{todo.id}", {}, "Authorization" => "made-up-token"
+      delete "/api/v1/todos/#{ todo.id }", headers: { "Authorization" => "made-up-token" }
 
       expect(response.status).to eq(401)
       expect(json[:message]).to eq("Unauthorized")
@@ -32,7 +32,7 @@ describe "Todos API" do
       todo = create(:todo, user: victim)
       attacker = create(:user)
 
-      delete "/api/v1/todos/#{todo.id}", {}, "Authorization" => attacker.auth_token
+      delete "/api/v1/todos/#{ todo.id }", headers: { "Authorization" => attacker.auth_token }
 
       expect(response.status).to eq(403)
       expect(json[:message]).to eq("Forbidden")
@@ -43,7 +43,7 @@ describe "Todos API" do
     it "respond with 404 for unknown todo id" do
       user = create(:user)
 
-      delete "/api/v1/todos/999", {}, "Authorization" => user.auth_token
+      delete "/api/v1/todos/999", headers: { "Authorization" => user.auth_token }
 
       expect(response.status).to eq(404)
       expect(json[:message]).to eq("Not Found")
@@ -57,7 +57,7 @@ describe "Todos API" do
 
     context 'without a list id' do
       it "responds with a nil list error" do
-        post "/api/v1/todos", {description: "Finish Breautodo"}, "Authorization" => @user.auth_token
+        post "/api/v1/todos", params: { description: "Finish Breautodo" }, headers: { "Authorization" => @user.auth_token }
 
         expect(response.status).to eq(406)
         expect(json[:errors]).to eq("No List")
@@ -70,7 +70,7 @@ describe "Todos API" do
       before { @list = create(:list) }
 
       it "creates a todo associated with that list" do
-        post "/api/v1/todos", {description: "Finish Breautodo", list_id: @list.id}, "Authorization" => @user.auth_token
+        post "/api/v1/todos", params: { description: "Finish Breautodo", list_id: @list.id }, headers: { "Authorization" => @user.auth_token }
 
         expect(response.status).to eq(201)
         expect(json[:todo][:id]).to eq(Todo.last.id)
@@ -84,7 +84,7 @@ describe "Todos API" do
       user = create(:user)
       list = create(:list)
 
-      post "/api/v1/todos", {description: "Finish Breautodo", list_id: list.id}, "Authorization" => "fake-token"
+      post "/api/v1/todos", params: { description: "Finish Breautodo", list_id: list.id }, headers: { "Authorization" => "fake-token" }
 
       expect(response.status).to eq(401)
       expect(json[:message]).to eq("Unauthorized")
@@ -101,7 +101,7 @@ describe "Todos API" do
       todo1 = create(:todo, user: user)
       todo2 = create(:todo, user: user)
 
-      get "/api/v1/todos", {}, "Authorization" => user.auth_token
+      get "/api/v1/todos", headers: { "Authorization" => user.auth_token }
 
       expect(response.status).to eq(200)
       expect(json[:todos][0][:id]).to eq(todo1.id)
@@ -116,7 +116,7 @@ describe "Todos API" do
       todo1 = create(:todo, user: user)
       todo2 = create(:todo, user: user)
 
-      get "/api/v1/todos", "Authorization" => "fake-token"
+      get "/api/v1/todos", headers: { "Authorization" => "fake-token" }
 
       expect(response.status).to eq(401)
       expect(json[:message]).to eq("Unauthorized")

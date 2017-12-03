@@ -11,13 +11,13 @@ describe TodosController do
 
   describe '#destroy' do
     it 'allows a user to delete own todo' do
-      delete :destroy, { id: accessible_todo.id }
+      delete :destroy, params: { id: accessible_todo.id }
       is_expected.to redirect_to todos_url
       is_expected.to set_flash.to('Todo deleted successfully')
     end
 
     it "does not allow a user to delete another user's todo" do
-      delete :destroy, { id: other_users_todo.id }
+      delete :destroy, params: { id: other_users_todo.id }
       is_expected.to redirect_to root_url
       is_expected.to set_flash.to('There was an error deleting your todo. You are not authorized to delete this todo.')
     end
