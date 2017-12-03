@@ -6,7 +6,7 @@ gem 'rails', '~> 4.2.7.1'
 
 gem 'devise', '4.3.0'
 gem 'figaro', '1.0'
-gem 'pundit', '~> 0.3'
+gem 'pundit', '~> 1.1.0'
 gem 'whenever', :require => false
 gem 'active_model_serializers'
 gem 'haml-rails', '~> 0.9'
