@@ -8,7 +8,7 @@ gem 'devise', '4.3.0'
 gem 'figaro', '1.0'
 gem 'pundit', '~> 0.3'
 gem 'whenever', :require => false
-gem 'active_model_serializers'
+gem 'active_model_serializers', '0.9.4'
 gem 'haml-rails', '~> 0.9'
 gem 'susy', '~> 2.2'
 gem 'autoprefixer-rails', '~> 6.7.0'

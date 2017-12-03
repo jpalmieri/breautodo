@@ -252,7 +252,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
+  active_model_serializers (= 0.9.4)
   autoprefixer-rails (~> 6.7.0)
   capybara (~> 2.13.0)
   coffee-rails (~> 4.0.0)
