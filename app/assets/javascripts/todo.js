@@ -57,6 +57,7 @@
     todosTable.prepend(tableRow);
     todosTable.show();
     $('#no-todos').remove();
+    $('.add-todo-button').prop('disabled', false);
   }
 
   function clearForm() {
