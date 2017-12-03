@@ -17,7 +17,6 @@ gem 'rails_autolink', '1.1.6'
 
 gem 'pry', group: [:development, :test]
 
-# Use sqlite3 as the database for Active Record
 group :production do
   gem 'pg', '~> 0.17'
   gem 'rails_12factor'
