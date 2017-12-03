@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ListsController do
-  include Devise::TestHelpers
 
   let!(:signed_in_user)  { create(:user) }
   let!(:other_user)      { create(:user) }

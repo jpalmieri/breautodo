@@ -26,7 +26,7 @@ $ git clone https://github.com/jpalmieri/breautodo.git
 
 Open the new directory: `$ cd breautodo`
 
-Install Postgres (if not already installed) with [Homebrew](http://brew.sh/): `$ brew install postgrsql`
+Install Postgres (if not already installed) with [Homebrew](http://brew.sh/): `$ brew install postgresql`
 
 Install gems: `$ bundle install`
 

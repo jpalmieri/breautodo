@@ -4,20 +4,19 @@ ruby '2.3.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.7.1'
 
-gem 'devise', '4.0.3'
+gem 'devise', '4.3.0'
 gem 'figaro', '1.0'
 gem 'pundit', '~> 0.3'
 gem 'whenever', :require => false
-gem 'active_model_serializers'
+gem 'active_model_serializers', '0.9.4'
 gem 'haml-rails', '~> 0.9'
 gem 'susy', '~> 2.2'
 gem 'autoprefixer-rails', '~> 6.7.0'
 gem 'data_migrate', '~> 1.2'
-gem 'rails_autolink'
+gem 'rails_autolink', '1.1.6'
 
 gem 'pry', group: [:development, :test]
 
-# Use sqlite3 as the database for Active Record
 group :production do
   gem 'pg', '~> 0.17'
   gem 'rails_12factor'
@@ -37,6 +36,7 @@ group :test do
   gem 'shoulda-matchers', '~> 2.7'
   gem 'email_spec', '~> 2.1.0'
   gem 'timecop', '~> 0.8.0'
+  gem 'test_after_commit', '~> 1.1.0'
 end
 
 # Use SCSS for stylesheets
