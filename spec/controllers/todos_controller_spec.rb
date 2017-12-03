@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TodosController do
-  include Devise::TestHelpers
 
   let!(:signed_in_user)  { create(:user) }
   let!(:other_user)      { create(:user) }

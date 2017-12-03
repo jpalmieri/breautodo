@@ -4,7 +4,7 @@ ruby '2.3.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.7.1'
 
-gem 'devise', '4.0.3'
+gem 'devise', '4.3.0'
 gem 'figaro', '1.0'
 gem 'pundit', '~> 0.3'
 gem 'whenever', :require => false
@@ -37,6 +37,7 @@ group :test do
   gem 'shoulda-matchers', '~> 2.7'
   gem 'email_spec', '~> 2.1.0'
   gem 'timecop', '~> 0.8.0'
+  gem 'test_after_commit', '~> 1.1.0'
 end
 
 # Use SCSS for stylesheets
