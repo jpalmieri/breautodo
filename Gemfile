@@ -4,6 +4,7 @@ ruby '2.3.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
 
+gem 'pg', '~> 0.17'
 gem 'devise', '4.3.0'
 gem 'figaro', '1.0'
 gem 'pundit', '~> 0.3'
@@ -18,13 +19,8 @@ gem 'rails_autolink', '1.1.6'
 gem 'pry', group: [:development, :test]
 
 group :production do
-  gem 'pg', '~> 0.17'
   gem 'rails_12factor'
   gem 'puma', '~> 3.0'
-end
-
-group :development do
-  gem 'sqlite3', '~> 1.3'
 end
 
 group :test do
