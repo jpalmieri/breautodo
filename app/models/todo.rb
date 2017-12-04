@@ -1,4 +1,4 @@
-class Todo < ActiveRecord::Base
+class Todo < ApplicationRecord
   belongs_to :user
   belongs_to :list, touch: true
   scope :newest, -> { order(created_at: :desc) }
