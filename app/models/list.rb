@@ -1,4 +1,4 @@
-class List < ActiveRecord::Base
+class List < ApplicationRecord
   belongs_to :user
   has_many :todos, dependent: :destroy
   scope :recently_updated, -> { order(updated_at: :desc) }

@@ -21,8 +21,6 @@ Breautodo::Application.configure do
 
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
-  
-  config.active_record.raise_in_transactional_callbacks = true
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -37,4 +35,5 @@ Breautodo::Application.configure do
   config.action_mailer.perform_deliveries = true
   # Override Action Mailer's 'silent errors' in development
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
 end

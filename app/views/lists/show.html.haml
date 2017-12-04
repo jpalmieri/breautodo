@@ -6,7 +6,7 @@
       = link_to 'Edit', edit_list_path(@list), class: :btn
 = form_for :todo, html: {class: 'add-todo'} do |form|
   = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
-  = form.submit '+', data: { :"create-todo-button" => true, :"list-id" => @list.id }, class: 'add-todo-button'
+  = form.submit '+', class: 'add-todo-button', data: {:"list-id" => @list.id, disable_with: false }
 - if @todos.first
   %table#todos
     - @todos.each_with_index do |todo, i|
@@ -17,4 +17,3 @@
   %table#todos
   #no-todos
     Enter a description of your todo in the box above.
-
