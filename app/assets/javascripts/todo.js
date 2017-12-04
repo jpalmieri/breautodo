@@ -22,6 +22,10 @@
     // wrap it in a jQuery object.
     var clickedElement = $(event.target);
 
+    // disable it and remove the blue selection border around it
+    $(clickedElement).prop('disabled', true);
+    $(clickedElement).blur();
+
     // The delete button needs a data-todo-id attribute, e.g.
     // <button data-todo-id="7" data-delete-todo-button="true">Delete</button>
     var todoId = clickedElement.data("todo-id");
@@ -37,7 +41,7 @@
     function removeTodoFromDOM() {
       // Assumes that the delete button is a child element of the
       // todo's table row.
-      clickedElement.blur();
+
       var todoRow = clickedElement.closest("tr");
       var rowNumber = todoRow.find('td').html();
       todoRow.fadeOut("normal", function() { $(this).remove(); });
@@ -57,6 +61,7 @@
     todosTable.prepend(tableRow);
     todosTable.show();
     $('#no-todos').remove();
+    // manually enable the button, since rails now automatically disables it
     $('.add-todo-button').prop('disabled', false);
   }
 

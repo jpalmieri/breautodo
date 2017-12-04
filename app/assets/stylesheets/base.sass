@@ -69,6 +69,13 @@ body
       color: $black
       cursor: pointer
       text-decoration: none
+    &[disabled]
+      background-color: $lighterGray
+      &:hover
+        background-color: $lighterGray
+        color: $darkGray
+        pointer-events: none
+        text-decoration: none
 
   h3.caps-header
     text-transform: uppercase
