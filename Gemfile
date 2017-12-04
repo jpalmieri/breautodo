@@ -28,7 +28,6 @@ group :test do
   gem 'capybara', '~> 2.13.0'
   gem 'poltergeist', '~> 1.14.0'
   gem 'factory_girl_rails', '~> 4.8.0'
-  gem 'database_cleaner', '~> 1.6.2'
   gem 'shoulda-matchers', '~> 2.7'
   gem 'email_spec', '~> 2.1.0'
   gem 'timecop', '~> 0.8.0'

@@ -32,6 +32,8 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending!
 
 RSpec.configure do |config|
+  config.use_transactional_fixtures = true
+
   # Include SignInHelper only in feature specs
   config.include SignInHelper, type: :system
   config.include AlertConfirmer, js: true
