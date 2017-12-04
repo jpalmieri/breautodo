@@ -57,9 +57,6 @@
     todosTable.prepend(tableRow);
     todosTable.show();
     $('#no-todos').remove();
-    // manually enable the button
-    // rails 5 automatically disables all submit buttons on click
-    $('.add-todo-button').prop('disabled', false);
   }
 
   function clearForm() {
