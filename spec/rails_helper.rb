@@ -33,7 +33,7 @@ ActiveRecord::Migration.check_pending!
 
 RSpec.configure do |config|
   # Include SignInHelper only in feature specs
-  config.include SignInHelper, type: :feature
+  config.include SignInHelper, type: :system
   config.include AlertConfirmer, js: true
 
   # include email-spec helpers and matcher in all examples

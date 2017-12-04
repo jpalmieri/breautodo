@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Delete todo item', js: true do
+describe 'Delete todo item', js: true do
   let(:user) { create(:user) }
   let(:list) { create(:list, user: user) }
 
@@ -20,5 +20,3 @@ feature 'Delete todo item', js: true do
     expect( page ).to_not have_content('Buy groceries')
   end
 end
-
-

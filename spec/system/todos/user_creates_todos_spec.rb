@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User creates todos', js: true do
+describe 'User creates todos', js: true do
   let!(:user) { create(:user) }
   let!(:list) { create(:list, user: user) }
 

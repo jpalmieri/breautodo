@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User signs out' do
+describe 'User signs out' do
   let(:user) { create(:user) }
   before { sign_in(user) }
 

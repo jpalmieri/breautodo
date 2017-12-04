@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User creates lists', js: true do
+describe 'User creates lists', js: true do
   let!(:user) { create(:user) }
   let(:first_list) { build(:list) }
   let(:second_list) { build(:list, name: 'some other list') }

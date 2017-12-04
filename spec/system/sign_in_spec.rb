@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User signs in' do
+describe 'User signs in' do
   let(:user) { create(:user) }
   before { sign_in(user) }
 

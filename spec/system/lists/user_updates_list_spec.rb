@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User updates list', js: true do
+describe 'User updates list', js: true do
   let!(:user) { create(:user) }
   let!(:first_list) { create(:list, user: user) }
   let!(:second_list) { build(:list, user: user, name: 'some other list') }
