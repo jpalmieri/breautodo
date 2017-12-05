@@ -7,8 +7,7 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'shoulda/matchers'
 require 'email_spec'
-require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :webkit
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -33,6 +32,14 @@ ActiveRecord::Migration.check_pending!
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
+
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :webkit
+  end
 
   # Include SignInHelper only in feature specs
   config.include SignInHelper, type: :system
