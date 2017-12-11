@@ -8,6 +8,10 @@ require 'capybara/rspec'
 require 'shoulda/matchers'
 require 'email_spec'
 Capybara.javascript_driver = :webkit
+Capybara.register_server :puma do |app, port, host|
+    Rack::Handler::Puma.run(app, Port: port, Threads: "0:1")
+  end
+Capybara.server = :puma
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -37,9 +41,9 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
-  config.before(:each, type: :system, js: true) do
-    driven_by :webkit
-  end
+  # config.before(:each, type: :system, js: true) do
+  #   driven_by :webkit
+  # end
 
   # Include SignInHelper only in feature specs
   config.include SignInHelper, type: :system

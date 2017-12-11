@@ -1,12 +1,13 @@
-workers Integer(ENV['WEB_CONCURRENCY'] || 2)
-threads_count = Integer(ENV['MAX_THREADS'] || 5)
-threads threads_count, threads_count
-
-preload_app!
+# workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+# threads_count = Integer(ENV['MAX_THREADS'] || 5)
+# threads threads_count, threads_count
+workers 0
+threads 0,1
+# preload_app!
 
 rackup      DefaultRackup
 port        ENV['PORT']     || 3000
-environment ENV['RACK_ENV'] || 'development'
+environment ENV['RACK_ENV'] || 'test'
 
 on_worker_boot do
   # Valid on Rails up to 4.1 the initializer method of setting `pool` size
