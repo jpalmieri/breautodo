@@ -8,11 +8,7 @@
   = form.text_field :description, autofocus: true, placeholder: 'Description', class: 'add-description'
   = form.submit '+', class: 'add-todo-button', data: {:"list-id" => @list.id, disable_with: false }
 - if @todos.first
-  %table#todos
-    - @todos.each_with_index do |todo, i|
-      %tr
-        %td.description= auto_link(todo.description, html: {target: '_blank'})
-        %td= button_to '–', todo, method: :delete, data: { :"todo-id" => todo.id, :"delete-todo-button" => true }
+  = react_component('Todos', todos: @todos)
 - else
   %table#todos
   #no-todos
