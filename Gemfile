@@ -15,6 +15,7 @@ gem 'susy', '~> 2.2'
 gem 'autoprefixer-rails', '~> 6.7.0'
 gem 'data_migrate', '~> 1.2'
 gem 'rails_autolink', '1.1.6'
+gem 'react-rails', '2.3.1'
 
 gem 'pry', group: [:development, :test]
 
