@@ -27,7 +27,7 @@ group :test do
   gem 'rspec-rails', '~> 3.7.0'
   gem 'capybara', '~> 2.13.0'
   gem 'poltergeist', '~> 1.14.0'
-  gem 'factory_girl_rails', '~> 4.8.0'
+  gem 'factory_bot_rails', '~> 4.8.2'
   gem 'database_cleaner', '~> 1.6.2'
   gem 'shoulda-matchers', '~> 2.7'
   gem 'email_spec', '~> 2.1.0'
